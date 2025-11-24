@@ -1,6 +1,7 @@
 import { fetchFromStrapi } from "@/fetch/fetch";
 import StrapiImage from "../StrapiImage/StrapiImage";
 import Link from "next/link";
+import { getLocale } from "next-intl/server";
 
 function Socials({
   socials,
@@ -35,7 +36,9 @@ const populateFooter = {
 };
 
 export async function StrapiFooter() {
+  const locale = await getLocale();
   const { data: footer } = await fetchFromStrapi("/footer", {
+    locale,
     populate: populateFooter,
   });
 
