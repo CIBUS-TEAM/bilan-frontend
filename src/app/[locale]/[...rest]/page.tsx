@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import StrapiContactForm from "@/components/Form/Form";
 import Cards from "@/components/Sections/Cards";
 import CTABanner from "@/components/Sections/CTABanner";
 import Hero from "@/components/Sections/Hero";
@@ -8,6 +9,7 @@ import Stages from "@/components/Sections/Stages";
 import TextCards from "@/components/Sections/TextCards";
 import TextItems from "@/components/Sections/TextItems";
 import { fetchFromStrapi } from "@/fetch/fetch";
+import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 
 const components = {
@@ -21,11 +23,24 @@ const components = {
   "sections.cards": Cards,
 };
 
-export default async function Home(props: any) {
+export type AppLocale = (typeof routing.locales)[number];
+
+export interface PageProps<TParams = object> {
+  params: Promise<{ locale: AppLocale } & TParams>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+type Props = PageProps<{
+  rest: string[];
+}>;
+
+export default async function Home(props: Props) {
+  console.log("WE ARE ON Page");
   const resolvedParams = await props.params;
   const slug = "/" + (resolvedParams.rest ?? []).join("/");
 
   const data = await fetchFromStrapi("/pages", {
+    locale: resolvedParams.locale,
     filters: { slug: { $eq: slug } },
     populate: {
       seo: { populate: { openGraph: true } },
@@ -106,20 +121,10 @@ export default async function Home(props: any) {
   if (!data?.data.length) {
     notFound();
   }
-  console.log(data, "pageData");
+
   return (
     <div>
       <main>
-        {/* <h1>Header-1</h1>
-        <h2>Header-2</h2>
-        <h3>Header-3</h3>
-        <h4>Header-4</h4>
-        <h5>Header-5</h5>
-        <p className="text-lg">Paragraph-18</p>
-        <p className="text-base font-medium">Paragraph-16-medium</p>
-        <p className="text-sm">Paragraph-14</p>
-        <p className="text-xs">Paragraph-12</p>
-        <p className="text-base font-semibold">Paragraph-16-semibold</p> */}
         {data.data[0].content.map((item: any) => {
           const key = item.__component as keyof typeof components;
           const Component = components[key];
@@ -128,6 +133,8 @@ export default async function Home(props: any) {
           // @ts-ignore
           return <Component key={item.id + item.__component} data={item} />;
         })}
+
+        <StrapiContactForm />
       </main>
     </div>
   );

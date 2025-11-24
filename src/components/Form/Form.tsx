@@ -1,7 +1,10 @@
 import { fetchFromStrapi } from "@/fetch/fetch";
+import { getLocale } from "next-intl/server";
 
 export async function StrapiContactForm() {
+  const locale = await getLocale();
   const contactFormData = await fetchFromStrapi("/contact-form", {
+    locale,
     populate: {
       nameField: true,
       phoneField: true,
@@ -14,7 +17,7 @@ export async function StrapiContactForm() {
       headers: true,
     },
   });
-  // console.log(contactFormData, "contactFormData");
+
   return <form>form-1</form>;
 }
 

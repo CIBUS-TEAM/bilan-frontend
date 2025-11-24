@@ -4,7 +4,7 @@ const READ_ONLY_API_KEY =
 export async function fetchFromStrapi(path: string, query: object) {
   const queryString = typeof query === "object" ? qs.stringify(query) : query;
   const url = `https://mindful-sunrise-bae89da167.strapiapp.com/api${path}?${queryString}`;
-  // console.log(url, "url");
+
   const res = await fetch(url, {
     headers: {
       Authorization: `Bearer ${READ_ONLY_API_KEY}`,

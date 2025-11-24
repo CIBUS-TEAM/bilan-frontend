@@ -2,9 +2,12 @@ import { fetchFromStrapi } from "@/fetch/fetch";
 import StrapiButton from "../Button/Button";
 import StrapiImage from "../StrapiImage/StrapiImage";
 import Link from "next/link";
+import { getLocale } from "next-intl/server";
 
 export async function StrapiHeader() {
+  const locale = await getLocale();
   const headerData = await fetchFromStrapi("/header", {
+    locale,
     populate: {
       logo: { populate: { image: true } },
       links: true,
@@ -12,7 +15,7 @@ export async function StrapiHeader() {
     },
   });
   const { logo, links, button } = headerData.data;
-  console.log(headerData, "headerData");
+
   return (
     <header className="relative text-text-main border-b border-border px-4 py-2 flex items-center justify-between md:px-30">
       <StrapiImage image={logo} />
