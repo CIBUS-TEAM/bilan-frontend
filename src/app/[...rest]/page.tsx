@@ -1,6 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import Cards from "@/components/Sections/Cards";
+import CTABanner from "@/components/Sections/CTABanner";
+import Hero from "@/components/Sections/Hero";
+import OurProjects from "@/components/Sections/OurProjects";
+import Pricing from "@/components/Sections/Pricing";
+import Stages from "@/components/Sections/Stages";
+import TextCards from "@/components/Sections/TextCards";
+import TextItems from "@/components/Sections/TextItems";
 import { fetchFromStrapi } from "@/fetch/fetch";
 import { notFound } from "next/navigation";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+const components = {
+  "sections.text-items": TextItems,
+  "sections.text-cards": TextCards,
+  "sections.stages": Stages,
+  "sections.pricing": Pricing,
+  "sections.our-projects": OurProjects,
+  "sections.hero": Hero,
+  "sections.cta-banner": CTABanner,
+  "sections.cards": Cards,
+};
+
 export default async function Home(props: any) {
   const resolvedParams = await props.params;
   const slug = "/" + (resolvedParams.rest ?? []).join("/");
@@ -86,11 +106,11 @@ export default async function Home(props: any) {
   if (!data?.data.length) {
     notFound();
   }
-  // console.log(data, "pageData");
+  console.log(data, "pageData");
   return (
     <div>
       <main>
-        <h1>Header-1</h1>
+        {/* <h1>Header-1</h1>
         <h2>Header-2</h2>
         <h3>Header-3</h3>
         <h4>Header-4</h4>
@@ -99,7 +119,15 @@ export default async function Home(props: any) {
         <p className="text-base font-medium">Paragraph-16-medium</p>
         <p className="text-sm">Paragraph-14</p>
         <p className="text-xs">Paragraph-12</p>
-        <p className="text-base font-semibold">Paragraph-16-semibold</p>
+        <p className="text-base font-semibold">Paragraph-16-semibold</p> */}
+        {data.data[0].content.map((item: any) => {
+          const key = item.__component as keyof typeof components;
+          const Component = components[key];
+          if (!Component) return null;
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          return <Component key={item.id + item.__component} data={item} />;
+        })}
       </main>
     </div>
   );
