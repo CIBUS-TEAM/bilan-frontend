@@ -1,6 +1,22 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function TextItems({ data }: { data: any }) {
-  return <div>{data.__component}</div>;
+import SectionHeaders from "../ui/Headers/SectionHeaders";
+
+export function TextItems({
+  data,
+}: {
+  data: {
+    headers: {
+      isCentered: boolean;
+      badge?: string;
+      title: string;
+      description: string;
+    };
+  };
+}) {
+  return (
+    <section>
+      <SectionHeaders {...data.headers} />
+    </section>
+  );
 }
 
 export default TextItems;

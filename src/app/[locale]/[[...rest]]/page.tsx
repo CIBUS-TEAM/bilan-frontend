@@ -35,7 +35,6 @@ type Props = PageProps<{
 }>;
 
 export default async function Home(props: Props) {
-  console.log("WE ARE ON Page");
   const resolvedParams = await props.params;
   const slug = "/" + (resolvedParams.rest ?? []).join("/");
 
