@@ -1,6 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function Cards({ data }: { data: any }) {
-  return <div>{data.__component}</div>;
+import Section from "../ui/Section/Section";
+
+export function Cards({ data }: { data: { __component: string } }) {
+  return <Section>{data.__component}</Section>;
 }
 
 export default Cards;

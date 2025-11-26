@@ -9,8 +9,8 @@ import Stages from "@/components/Sections/Stages";
 import TextCards from "@/components/Sections/TextCards";
 import TextItems from "@/components/Sections/TextItems";
 import { fetchFromStrapi } from "@/fetch/fetch";
-import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
+import { PageProps } from "@/types/types";
 
 const components = {
   "sections.text-items": TextItems,
@@ -23,19 +23,11 @@ const components = {
   "sections.cards": Cards,
 };
 
-export type AppLocale = (typeof routing.locales)[number];
-
-export interface PageProps<TParams = object> {
-  params: Promise<{ locale: AppLocale } & TParams>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
 type Props = PageProps<{
   rest: string[];
 }>;
 
 export default async function Home(props: Props) {
-  console.log("WE ARE ON Page");
   const resolvedParams = await props.params;
   const slug = "/" + (resolvedParams.rest ?? []).join("/");
 

@@ -46,7 +46,7 @@ export async function StrapiHeader() {
                 newTab: boolean;
               }) => (
                 <Link
-                  className="text-[16px] font-bold leading-[26px]"
+                  className="text-base font-bold leading-[26px]"
                   key={link.id}
                   href={link.href}
                 >
