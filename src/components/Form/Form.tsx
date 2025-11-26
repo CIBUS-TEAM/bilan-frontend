@@ -1,6 +1,7 @@
 import { fetchFromStrapi } from "@/fetch/fetch";
 import { getLocale } from "next-intl/server";
 import SectionHeaders from "@/components/ui/Headers/SectionHeaders";
+import Section from "../ui/Section/Section";
 
 export async function StrapiContactForm() {
   const locale = await getLocale();
@@ -29,11 +30,11 @@ export async function StrapiContactForm() {
   });
 
   return (
-    <section>
+    <Section>
       <form>
         <SectionHeaders {...contactFormData.data.headers} />
       </form>
-    </section>
+    </Section>
   );
 }
 

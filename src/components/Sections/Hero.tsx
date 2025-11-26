@@ -1,21 +1,12 @@
+import { SectionHeadersData } from "@/types/types";
 import SectionHeaders from "../ui/Headers/SectionHeaders";
+import Section from "../ui/Section/Section";
 
-export function Hero({
-  data,
-}: {
-  data: {
-    headers: {
-      isCentered: boolean;
-      badge?: string;
-      title: string;
-      description: string;
-    };
-  };
-}) {
+export function Hero({ data }: { data: { headers: SectionHeadersData } }) {
   return (
-    <section>
+    <Section>
       <SectionHeaders {...data.headers} isHero isDesktopSecondary />
-    </section>
+    </Section>
   );
 }
 

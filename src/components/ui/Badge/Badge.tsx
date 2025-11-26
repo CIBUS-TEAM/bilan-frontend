@@ -25,10 +25,12 @@ export function Badge({
       )}
       style={{ borderColor: badgeVariants[variant] }}
     >
-      {withIcon && <RhombusIcon strokeColor={badgeVariants[variant]} />}
+      {withIcon && (
+        <RhombusIcon size="16" strokeColor={badgeVariants[variant]} />
+      )}
       <span
         className={cn(
-          "text-[12px] font-medium leading-5 lg:text-[14px] lg:leading-[22px]"
+          "text-xs font-medium leading-5 lg:text-sm lg:leading-[22px]"
         )}
         style={{ color: badgeVariants[variant] }}
       >

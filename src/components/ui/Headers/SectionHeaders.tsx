@@ -1,5 +1,12 @@
+import { SectionHeadersData } from "@/types/types";
 import Badge from "../Badge/Badge";
 import { cn } from "@/utilities/styles";
+
+interface SectionHeadersProps extends SectionHeadersData {
+  isHero?: boolean;
+  isDesktopSecondary?: boolean;
+  className?: string;
+}
 
 export function SectionHeaders({
   isCentered,
@@ -9,15 +16,7 @@ export function SectionHeaders({
   isHero,
   isDesktopSecondary,
   className,
-}: {
-  isCentered: boolean;
-  badge?: string;
-  title: string;
-  description: string;
-  isHero?: boolean;
-  isDesktopSecondary?: boolean;
-  className?: string;
-}) {
+}: SectionHeadersProps) {
   return (
     <div
       className={cn(
@@ -71,8 +70,8 @@ export function SectionHeaders({
           "text-text-secondary",
           `${
             isHero
-              ? "text-[18px] font-semibold leading-7 lg:text-[22px] lg:leading-[30px]"
-              : "text-[16px] font-medium leading-[26px] lg:text-[18px] lg:leading-7"
+              ? "text-lg font-semibold leading-7 lg:text-[22px] lg:leading-[30px]"
+              : "text-base font-medium leading-[26px] lg:text-lg lg:leading-7"
           }`,
           { "lg:text-white": isDesktopSecondary },
           { "text-center": isCentered }
