@@ -29,25 +29,20 @@ export function SectionHeaders({
         isDesktopSecondary ? (
           <>
             <Badge
-              className="mb-6 flex lg:hidden"
+              containerClassName="mb-6 flex lg:hidden"
               withIcon={true}
               text={badge}
-              variant={"primary"}
             />
             <Badge
-              className="mb-6 hidden lg:flex"
+              containerClassName="mb-6 hidden lg:flex border-white"
+              iconClassName="stroke-white"
+              textClassName="text-white"
               withIcon={true}
               text={badge}
-              variant={"secondary"}
             />
           </>
         ) : (
-          <Badge
-            className="mb-6"
-            withIcon={true}
-            text={badge}
-            variant={"primary"}
-          />
+          <Badge containerClassName="mb-6" withIcon={true} text={badge} />
         )
       ) : null}
       {isHero ? (

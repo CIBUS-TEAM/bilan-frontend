@@ -12,6 +12,7 @@ export function RhombusIcon({
       viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <rect
         x="7.80859"
@@ -19,8 +20,6 @@ export function RhombusIcon({
         width="7.62743"
         height="7.62743"
         transform="rotate(45 7.80859 2.41421)"
-        // stroke={strokeColor}
-        className={className}
         strokeWidth="2"
       />
     </svg>
