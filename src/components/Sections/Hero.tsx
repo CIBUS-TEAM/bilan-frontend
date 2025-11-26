@@ -4,9 +4,11 @@ import Section from "../ui/Section/Section";
 
 export function Hero({ data }: { data: { headers: SectionHeadersData } }) {
   return (
-    <Section>
-      <SectionHeaders {...data.headers} isHero isDesktopSecondary />
-    </Section>
+    <div className="bg-black">
+      <Section>
+        <SectionHeaders {...data.headers} isHero isDesktopSecondary />
+      </Section>
+    </div>
   );
 }
 

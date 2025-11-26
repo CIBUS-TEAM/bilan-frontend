@@ -1,8 +1,8 @@
 export function RhombusIcon({
-  strokeColor,
+  className,
   size = "16",
 }: {
-  strokeColor: string;
+  className?: string;
   size?: string;
 }) {
   return (
@@ -19,7 +19,8 @@ export function RhombusIcon({
         width="7.62743"
         height="7.62743"
         transform="rotate(45 7.80859 2.41421)"
-        stroke={strokeColor}
+        // stroke={strokeColor}
+        className={className}
         strokeWidth="2"
       />
     </svg>

@@ -2,8 +2,16 @@ import { cn } from "@/utilities/styles";
 import RhombusIcon from "@/components/Icons/RhombusIcon";
 
 const badgeVariants = {
-  primary: "#0060DE",
-  secondary: "#FFFFFF",
+  primary: {
+    border: "border-primary",
+    text: "text-primary",
+    icon: "stroke-primary",
+  },
+  secondary: {
+    border: "border-white",
+    text: "text-white",
+    icon: "stroke-white",
+  },
 };
 
 export function Badge({
@@ -21,18 +29,18 @@ export function Badge({
     <div
       className={cn(
         "flex gap-1 px-2 py-0.5 rounded-sm border items-center w-fit",
+        badgeVariants[variant].border,
         className
       )}
-      style={{ borderColor: badgeVariants[variant] }}
     >
       {withIcon && (
-        <RhombusIcon size="16" strokeColor={badgeVariants[variant]} />
+        <RhombusIcon size="16" className={badgeVariants[variant].icon} />
       )}
       <span
         className={cn(
-          "text-xs font-medium leading-5 lg:text-sm lg:leading-[22px]"
+          "text-xs font-medium leading-5 lg:text-sm lg:leading-[22px]",
+          badgeVariants[variant].text
         )}
-        style={{ color: badgeVariants[variant] }}
       >
         {text}
       </span>
