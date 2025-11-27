@@ -11,7 +11,7 @@ type ButtonProps = {
   href?: string;
 };
 
-export function StrapiButton({
+export function Button({
   variant = "primary",
   children,
   className,
@@ -19,7 +19,7 @@ export function StrapiButton({
   disabled = false,
   href,
 }: ButtonProps) {
-  const buttonClass = cn(
+  const buttonClassName = cn(
     "px-5 py-3 rounded-lg flex gap-2 justify-center items-center cursor-pointer text-base font-semibold",
     {
       "bg-primary text-white hover:bg-primary-dark": variant === "primary",
@@ -31,14 +31,14 @@ export function StrapiButton({
   );
 
   return href ? (
-    <Link className={buttonClass} href={href}>
+    <Link className={buttonClassName} href={href}>
       {children} {withCTAIcon && <CTAIcon />}
     </Link>
   ) : (
-    <button className={buttonClass} disabled={disabled}>
+    <button className={buttonClassName} disabled={disabled}>
       {children} {withCTAIcon && <CTAIcon />}
     </button>
   );
 }
 
-export default StrapiButton;
+export default Button;

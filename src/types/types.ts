@@ -13,3 +13,9 @@ export interface SectionHeadersData {
   title: string;
   description: string;
 }
+
+export interface StrapiButton {
+  label: string;
+  href: string;
+  newTab: boolean;
+}
