@@ -19,3 +19,24 @@ export interface StrapiButton {
   href: string;
   newTab: boolean;
 }
+
+export interface StrapiImageData {
+  url: string;
+}
+
+export interface StrapiImage {
+  id: number;
+  alt: string;
+  image: StrapiImageData;
+}
+
+export type ButtonProps = {
+  variant?: "primary" | "secondary";
+  children: React.ReactNode;
+  className?: string;
+  withCTAIcon?: boolean;
+  disabled?: boolean;
+  href?: string;
+  isLoading?: boolean;
+  type?: "submit" | "reset" | "button";
+};
