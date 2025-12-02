@@ -19,3 +19,13 @@ export interface StrapiButton {
   href: string;
   newTab: boolean;
 }
+
+export interface StrapiImageData {
+  url: string;
+}
+
+export interface StrapiImage {
+  id: number;
+  alt: string;
+  image: StrapiImageData;
+}

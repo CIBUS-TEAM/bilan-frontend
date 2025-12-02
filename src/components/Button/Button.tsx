@@ -1,14 +1,17 @@
 import { cn } from "@/utilities/styles";
 import CTAIcon from "../Icons/CTAIcon";
 import Link from "next/link";
+import LoadingIcon from "../Icons/LoadingIcon";
 
-type ButtonProps = {
+export type ButtonProps = {
   variant?: "primary" | "secondary";
   children: React.ReactNode;
   className?: string;
   withCTAIcon?: boolean;
   disabled?: boolean;
   href?: string;
+  isLoading?: boolean;
+  type?: "submit" | "reset" | "button";
 };
 
 export function Button({
@@ -18,6 +21,8 @@ export function Button({
   withCTAIcon = false,
   disabled = false,
   href,
+  isLoading,
+  type,
 }: ButtonProps) {
   const buttonClassName = cn(
     "px-5 py-3 rounded-lg flex gap-2 justify-center items-center cursor-pointer text-base font-semibold",
@@ -35,8 +40,13 @@ export function Button({
       {children} {withCTAIcon && <CTAIcon />}
     </Link>
   ) : (
-    <button className={buttonClassName} disabled={disabled}>
-      {children} {withCTAIcon && <CTAIcon />}
+    <button
+      className={buttonClassName}
+      disabled={disabled || isLoading}
+      type={type}
+    >
+      {children}
+      {withCTAIcon ? isLoading ? <LoadingIcon /> : <CTAIcon /> : null}
     </button>
   );
 }
