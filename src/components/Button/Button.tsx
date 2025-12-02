@@ -1,8 +1,18 @@
 import { cn } from "@/utilities/styles";
 import CTAIcon from "../Icons/CTAIcon";
 import Link from "next/link";
-import { ButtonProps } from "@/types/types";
 import LoadingIcon from "../Icons/LoadingIcon";
+
+export type ButtonProps = {
+  variant?: "primary" | "secondary";
+  children: React.ReactNode;
+  className?: string;
+  withCTAIcon?: boolean;
+  disabled?: boolean;
+  href?: string;
+  isLoading?: boolean;
+  type?: "submit" | "reset" | "button";
+};
 
 export function Button({
   variant = "primary",
@@ -35,7 +45,7 @@ export function Button({
       disabled={disabled || isLoading}
       type={type}
     >
-      {children}{" "}
+      {children}
       {withCTAIcon ? isLoading ? <LoadingIcon /> : <CTAIcon /> : null}
     </button>
   );

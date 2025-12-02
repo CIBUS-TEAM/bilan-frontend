@@ -29,14 +29,3 @@ export interface StrapiImage {
   alt: string;
   image: StrapiImageData;
 }
-
-export type ButtonProps = {
-  variant?: "primary" | "secondary";
-  children: React.ReactNode;
-  className?: string;
-  withCTAIcon?: boolean;
-  disabled?: boolean;
-  href?: string;
-  isLoading?: boolean;
-  type?: "submit" | "reset" | "button";
-};

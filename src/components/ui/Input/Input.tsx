@@ -24,6 +24,8 @@ export default function Input({
   minLength,
   className,
 }: InputProps) {
+  const labelId = `${id}-label`;
+
   const baseClasses = cn(
     "border border-border rounded-lg bg-background-base p-3 text-base font-medium leading-[26px] outline-none resize-none",
     "user-valid:border-success",
@@ -34,7 +36,11 @@ export default function Input({
 
   return (
     <div className={cn("flex flex-col gap-2", className)}>
-      <label htmlFor={id} className="text-base font-semibold leading-[26px]">
+      <label
+        id={labelId}
+        htmlFor={id}
+        className="text-base font-semibold leading-[26px]"
+      >
         {label}
       </label>
 
@@ -43,6 +49,7 @@ export default function Input({
           required={required}
           id={id}
           name={id}
+          aria-labelledby={labelId}
           placeholder={placeholder}
           rows={rows}
           className={baseClasses}
@@ -54,6 +61,7 @@ export default function Input({
           required={required}
           type={type}
           id={id}
+          aria-labelledby={labelId}
           placeholder={placeholder}
           className={baseClasses}
           minLength={minLength}
