@@ -12,6 +12,7 @@ export type ButtonProps = {
   href?: string;
   isLoading?: boolean;
   type?: "submit" | "reset" | "button";
+  onClick?: () => void;
 };
 
 export function Button({
@@ -23,6 +24,7 @@ export function Button({
   href,
   isLoading,
   type,
+  onClick,
 }: ButtonProps) {
   const buttonClassName = cn(
     "px-5 py-3 rounded-lg flex gap-2 justify-center items-center cursor-pointer text-base font-semibold",
@@ -36,11 +38,12 @@ export function Button({
   );
 
   return href ? (
-    <Link className={buttonClassName} href={href}>
+    <Link className={buttonClassName} href={href} onClick={onClick}>
       {children} {withCTAIcon && <CTAIcon />}
     </Link>
   ) : (
     <button
+      onClick={onClick}
       className={buttonClassName}
       disabled={disabled || isLoading}
       type={type}
