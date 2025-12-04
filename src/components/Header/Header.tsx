@@ -1,5 +1,5 @@
 import { fetchFromStrapi } from "@/fetch/fetch";
-import StrapiButton from "../Button/Button";
+import Button from "../Button/Button";
 import StrapiImage from "../StrapiImage/StrapiImage";
 import { getLocale } from "next-intl/server";
 import { cn } from "@/utilities/styles";
@@ -44,14 +44,14 @@ export async function StrapiHeader() {
           )
         )}
       </div>
-      <StrapiButton
+      <Button
         className="hidden xl:flex"
         variant="primary"
         withCTAIcon
         href={button.href}
       >
         {button.label}
-      </StrapiButton>
+      </Button>
       <BurgerMenu links={links} button={button} />
     </header>
   );

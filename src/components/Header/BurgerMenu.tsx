@@ -10,8 +10,6 @@ interface BurgerMenuProps {
 }
 
 export default function BurgerMenu({ links, button }: BurgerMenuProps) {
-  console.log(links, "links");
-  console.log(button, "button");
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClose = () => setIsOpen(false);

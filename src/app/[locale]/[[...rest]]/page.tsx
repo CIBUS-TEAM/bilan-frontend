@@ -99,7 +99,8 @@ export default async function Home(props: Props) {
           "sections.cta-banner": {
             populate: {
               button: true,
-              image: { populate: { image: true } },
+              mobileImage: { populate: { image: true } },
+              desktopImage: { populate: { image: true } },
             },
           },
           "sections.cards": {
