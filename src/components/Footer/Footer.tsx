@@ -2,6 +2,7 @@ import { fetchFromStrapi } from "@/fetch/fetch";
 import StrapiImage from "../StrapiImage/StrapiImage";
 import Link from "next/link";
 import { getLocale } from "next-intl/server";
+import NavLink from "../NavLink/NavLink";
 
 function Socials({
   socials,
@@ -55,7 +56,7 @@ export async function StrapiFooter() {
 
   return (
     <footer>
-      <div className="md:flex gap-[9%] md:py-12 md:border-b md:border-border md:px-30">
+      <div className="md:flex gap-[9%] md:py-12 md:border-b md:px-4 md:border-border lg:gap-32 lg:px-30">
         <div className="pt-12 px-4 pb-8 flex flex-col gap-4  border-b border-border md:flex-1 md:p-0 md:border-0">
           <StrapiImage image={logo} />
           <p className="text-text-secondary text-base font-medium leading-[26px] md:text-lg md:leading-7">
@@ -66,22 +67,18 @@ export async function StrapiFooter() {
             socials={socials}
           />
         </div>
-        <div className="pt-8 px-4 pb-7 flex flex-col gap-4 border-b border-border md:flex-1 md:p-0 md:border-0">
-          <span className="text-base font-bold leading-[26px] md:text-lg md:leading-7">
+        <div className="pt-8 px-4 pb-7 flex flex-col gap-4 border-b border-border md:flex-1 md:p-0 md:border-0 lg:gap-6">
+          <span className="text-base font-bold leading-[26px] md:text-lg md:leading-7 lg:mb-2">
             {linksTitle}
           </span>
           {links.map((link: { id: number; href: string; label: string }) => (
-            <Link
-              key={link.id}
-              href={link.href}
-              className="text-text-secondary text-base font-medium leading-[26px] md:text-lg md:leading-7"
-            >
+            <NavLink key={link.id} href={link.href}>
               {link.label}
-            </Link>
+            </NavLink>
           ))}
         </div>
-        <div className="py-8 px-4 flex flex-col gap-4 border-b border-border md:flex-1 md:p-0 md:border-0">
-          <span className="text-base font-bold leading-[26px] md:text-lg md:leading-[22px]">
+        <div className="py-8 px-4 flex flex-col gap-4 border-b border-border md:flex-1 md:p-0 md:border-0 lg:gap-6">
+          <span className="text-base font-bold leading-[26px] md:text-lg md:leading-[22px] lg:mb-2">
             {contactsTitle}
           </span>
           {contactsItems.map((item: { text: string; id: number }) => (
