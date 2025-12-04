@@ -4,6 +4,7 @@ import StrapiImage from "../StrapiImage/StrapiImage";
 import { getLocale } from "next-intl/server";
 import { cn } from "@/utilities/styles";
 import NavLink from "../NavLink/NavLink";
+import BurgerMenu from "./BurgerMenu";
 
 export async function StrapiHeader() {
   const locale = await getLocale();
@@ -51,52 +52,7 @@ export async function StrapiHeader() {
       >
         {button.label}
       </StrapiButton>
-      <div className="relative xl:hidden">
-        <label
-          htmlFor="burger"
-          className="cursor-pointer w-8 h-6 flex flex-col justify-between items-center relative"
-        >
-          <input type="checkbox" id="burger" className="peer hidden" />
-          <span className="z-2 block h-1 w-full bg-primary rounded transition-all duration-300 peer-checked:translate-y-2.5 peer-checked:rotate-45"></span>
-          <span className="z-2 block h-1 w-full bg-primary rounded transition-all duration-300 peer-checked:opacity-0"></span>
-          <span className="z-2 block h-1 w-full bg-primary rounded transition-all duration-300 peer-checked:-translate-y-2.5 peer-checked:-rotate-45"></span>
-
-          <nav
-            className="
-            fixed top-14.5 lg:top-18.5 right-0 h-screen w-full bg-white
-            translate-x-full transition-transform duration-300
-            peer-checked:translate-x-0
-            pt-10 px-4 pb-28 flex flex-col gap-6
-            z-1 border-t border-border
-          "
-          >
-            {links.map(
-              (link: {
-                id: number;
-                label: string;
-                href: string;
-                newTab: boolean;
-              }) => (
-                <NavLink
-                  className="text-base font-bold leading-[26px]"
-                  key={link.id}
-                  href={link.href}
-                >
-                  {link.label}
-                </NavLink>
-              )
-            )}
-            <StrapiButton
-              className="mt-auto sm:w-fit sm:mx-auto"
-              variant="primary"
-              withCTAIcon
-              href={button.href}
-            >
-              {button.label}
-            </StrapiButton>
-          </nav>
-        </label>
-      </div>
+      <BurgerMenu links={links} button={button} />
     </header>
   );
 }

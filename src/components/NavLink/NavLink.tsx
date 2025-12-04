@@ -8,15 +8,17 @@ interface NavLinkProps {
   className?: string;
   href: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
-export function NavLink({ className, href, children }: NavLinkProps) {
+export function NavLink({ className, href, children, onClick }: NavLinkProps) {
   const pathname = usePathname();
   const isActive = href === pathname;
 
   return (
     <Link
       href={href}
+      onClick={onClick}
       className={cn(
         "text-text-secondary text-base font-medium leading-[26px] md:text-lg md:leading-7 hover:text-primary-dark",
         { "text-primary": isActive },
