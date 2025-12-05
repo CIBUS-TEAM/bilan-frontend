@@ -41,7 +41,7 @@ export function CTABanner({
           src={mobileImage.image.url}
           title={mobileImage.alt}
           alt={mobileImage.alt}
-          fill={true}
+          fill
         />
       </div>
       <Image
@@ -49,7 +49,7 @@ export function CTABanner({
         src={desktopImage.image.url}
         title={desktopImage.alt}
         alt={desktopImage.alt}
-        fill={true}
+        fill
       />
     </Section>
   );
