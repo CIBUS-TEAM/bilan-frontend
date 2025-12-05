@@ -30,19 +30,19 @@ export function SectionHeaders({
           <>
             <Badge
               containerClassName="mb-6 flex lg:hidden"
-              withIcon={true}
+              withIcon
               text={badge}
             />
             <Badge
               containerClassName="mb-6 hidden lg:flex border-white"
               iconClassName="stroke-white"
               textClassName="text-white"
-              withIcon={true}
+              withIcon
               text={badge}
             />
           </>
         ) : (
-          <Badge containerClassName="mb-6" withIcon={true} text={badge} />
+          <Badge containerClassName="mb-6" withIcon text={badge} />
         )
       ) : null}
       {isHero ? (

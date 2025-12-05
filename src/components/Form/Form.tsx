@@ -105,7 +105,7 @@ export async function StrapiContactForm() {
         <form
           action={handleSubmit}
           className={cn(
-            "bg-white border border-border shadow-[0_2px_4px_0_rgba(1,15,49,0.10)] rounded-2xl p-4",
+            "bg-white border border-border shadow-card rounded-2xl p-4",
             "flex flex-col gap-6 lg:gap-12 lg:flex-1 xl:flex-2"
           )}
         >
@@ -149,7 +149,7 @@ export async function StrapiContactForm() {
             <div
               key={item.id}
               className={cn(
-                "border border-border shadow-[0_2px_4px_0_rgba(1,15,49,0.10)] rounded-2xl bg-white",
+                "border border-border shadow-card rounded-2xl bg-white",
                 "flex gap-4 items-center p-4 lg:p-8"
               )}
             >

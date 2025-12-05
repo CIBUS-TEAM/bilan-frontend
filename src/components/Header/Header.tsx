@@ -22,7 +22,7 @@ export async function StrapiHeader() {
     <header
       className={cn(
         "text-text-main border-b border-border px-4 py-2 flex items-center justify-between lg:px-30 lg:py-4",
-        "fixed top-0 left-0 w-full z-2 bg-white"
+        "sticky top-0 left-0 w-full z-2 bg-white"
       )}
     >
       <StrapiImage image={logo} />
