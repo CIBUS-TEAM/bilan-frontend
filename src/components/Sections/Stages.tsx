@@ -50,9 +50,9 @@ export function Stages({ data }: { data: StagesProps }) {
                 {String(index + 1).padStart(2, "0")}
               </span>
               <div className="flex flex-col gap-2">
-                <span className="text-lg font-semibold leading-7 lg:text-[22px] lg:leading-[30px]">
+                <h3 className="text-lg! font-semibold! leading-7! lg:text-[22px]! lg:leading-[30px]!">
                   {item.title}
-                </span>
+                </h3>
                 <span className="text-base font-medium leading-[26px] text-text-secondary lg:text-lg  lg:leading-7">
                   {item.description}
                 </span>

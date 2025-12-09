@@ -27,9 +27,9 @@ export function Cards({ data }: { data: CardsSectionProps }) {
         >
           <Badge text={card.headers.badge} withIcon />
           <div className="flex flex-col gap-2 lg:gap-4">
-            <span className="text-xl font-semibold leading-7 lg:text-[28px] lg:leading-[38px]">
+            <h3 className="text-xl! font-semibold! leading-7! lg:text-[28px]! lg:leading-[38px]!">
               {card.headers.title}
-            </span>
+            </h3>
             {card.headers.description && (
               <p className="text-base font-medium leading-[26px] text-text-secondary lg:text-lg lg:leading-7">
                 {card.headers.description}
