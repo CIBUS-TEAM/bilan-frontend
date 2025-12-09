@@ -9,6 +9,8 @@
   --color-primary-dark: #003e99;
   --color-error: #c42e30;
   --color-success: #22c55e;
+
+  --shadow-card: 0 2px 4px 0 rgba(1, 15, 49, 0.1);
 }
 
 @theme inline {

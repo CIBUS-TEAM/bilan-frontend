@@ -16,7 +16,7 @@ export function Hero({
 
   return (
     <div className="bg-black">
-      <Section className="pt-27 lg:pt-39">
+      <Section>
         <SectionHeaders {...headers} isHero isDesktopSecondary />
         {(primaryButton || secondaryButton) && (
           <div className="flex flex-col gap-3 mt-8 sm:flex-row lg:gap-4 lg:mt-12">
