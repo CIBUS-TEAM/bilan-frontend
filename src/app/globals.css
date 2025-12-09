@@ -1,29 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-text-main: #1E1E1E;
-  --color-text-secondary: #656B77;
-  --color-border: #E2E8F0;
-  --color-background-base: #F5F7FA;
-  --color-primary: #0060DE;
-  --color-primary-dark: #003E99;
-  --color-error: #C42E30;
-  --color-success: #22C55E;
+  --color-text-main: #1e1e1e;
+  --color-text-secondary: #656b77;
+  --color-border: #e2e8f0;
+  --color-background-base: #f5f7fa;
+  --color-primary: #0060de;
+  --color-primary-dark: #003e99;
+  --color-error: #c42e30;
+  --color-success: #22c55e;
 
-  --shadow-card: 0 2px 4px 0 rgba(1, 15, 49, 0.10);
+  --shadow-card: 0 2px 4px 0 rgba(1, 15, 49, 0.1);
 }
 
 @theme inline {
   --font-manrope: var(--font-manrope);
 }
 
-
 body {
   font-family: var(--font-manrope);
   color: var(--color-text-main);
 }
 
-h1{
+h1 {
   @apply text-[2rem] font-bold leading-10.5 lg:text-[3.5rem] lg:leading-16;
 }
 
@@ -42,4 +41,8 @@ h4 {
 h5 {
   @apply text-[1rem] font-bold leading-6.5 lg:text-[1.125rem] lg:leading-5.5;
 }
-
+@layer utilities {
+  .bg-gradient-404 {
+    background: linear-gradient(180deg, #0060de 0%, #7eacdd 100%);
+  }
+}
