@@ -1,8 +1,9 @@
 "use client";
+
 import { cn } from "@/utilities/styles";
 import { useState } from "react";
 import NavLink from "../NavLink/NavLink";
-import StrapiButton from "../Button/Button";
+import Button from "../Button/Button";
 
 interface BurgerMenuProps {
   links: { id: number; label: string; href: string; newTab: boolean }[];
@@ -60,7 +61,7 @@ export default function BurgerMenu({ links, button }: BurgerMenuProps) {
           </NavLink>
         ))}
 
-        <StrapiButton
+        <Button
           className="mt-auto sm:w-fit sm:mx-auto"
           variant="primary"
           withCTAIcon
@@ -68,7 +69,7 @@ export default function BurgerMenu({ links, button }: BurgerMenuProps) {
           onClick={handleClose}
         >
           {button.label}
-        </StrapiButton>
+        </Button>
       </nav>
     </div>
   );
