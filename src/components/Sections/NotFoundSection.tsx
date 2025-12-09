@@ -27,7 +27,7 @@ function NotFoundContent({ data }: { data: Page404Data }) {
 export function NotFoundSection({ data }: { data: Page404Data }) {
   return (
     <>
-      <Section className="relative min-h-[730px] hidden md:flex overflow-hidden md:mt-14 lg:mt-20">
+      <Section className="relative min-h-[730px] hidden md:flex overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-gradient-404">
           <Image
             src="/images/404-desktop.webp"
@@ -43,7 +43,7 @@ export function NotFoundSection({ data }: { data: Page404Data }) {
           </div>
         </div>
       </Section>
-      <Section className="md:hidden mt-14 py-8">
+      <Section className="md:hidden py-8">
         <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-8 bg-gradient-404">
           <Image
             src="/images/404-mobile.webp"
