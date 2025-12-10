@@ -8,6 +8,8 @@ import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { AppLocale } from "@/types/types";
+import { fetchFromStrapi } from "@/fetch/fetch";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs/Breadcrumbs";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -38,11 +40,19 @@ export default async function RootLayout({
 
   setRequestLocale(locale);
 
+  const headerData = await fetchFromStrapi("/header", {
+    locale,
+    populate: {
+      links: true,
+    },
+  });
+
   return (
     <html lang={locale}>
       <body className={manrope.className}>
         <NextIntlClientProvider>
           <StrapiHeader />
+          <Breadcrumbs links={headerData.data.links} locale={locale} />
           {children}
           <StrapiFooter />
         </NextIntlClientProvider>
