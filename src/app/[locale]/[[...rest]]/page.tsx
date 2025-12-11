@@ -11,6 +11,7 @@ import TextItems from "@/components/Sections/TextItems";
 import { fetchFromStrapi } from "@/fetch/fetch";
 import { notFound } from "next/navigation";
 import { PageProps } from "@/types/types";
+import { Metadata } from "next";
 
 const components = {
   "sections.text-items": TextItems,
@@ -26,6 +27,35 @@ const components = {
 type Props = PageProps<{
   rest: string[];
 }>;
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const resolvedParams = await props.params;
+  const slug = "/" + (resolvedParams.rest ?? []).join("/");
+  const data = await fetchFromStrapi("/pages", {
+    locale: resolvedParams.locale,
+    filters: { slug: { $eq: slug } },
+    populate: {
+      seo: { populate: { metaImage: true } },
+    },
+  });
+  if (!data?.data.length) {
+    return {
+      title: "Page not found",
+    };
+  }
+
+  const seo = data.data[0].seo;
+  const metaImageUrl = seo?.metaImage?.url ? `${seo.metaImage.url}` : undefined;
+  return {
+    title: seo?.metaTitle || undefined,
+    description: seo?.metaDescription || undefined,
+    openGraph: {
+      title: seo?.metaTitle || undefined,
+      description: seo?.metaDescription || undefined,
+      images: metaImageUrl ? [metaImageUrl] : undefined,
+    },
+  };
+}
 
 export default async function Home(props: Props) {
   const resolvedParams = await props.params;
