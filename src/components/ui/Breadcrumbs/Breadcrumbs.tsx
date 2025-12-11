@@ -9,13 +9,17 @@ interface BreadcrumbsProps {
   locale: string;
 }
 
+const LINK_CLASSES =
+  "text-sm font-medium leading-[22px] text-text-secondary hover:text-primary transition-colors";
 export function Breadcrumbs({ links, locale }: BreadcrumbsProps) {
   const pathname = usePathname();
   const linkMap = new Map(links.map((link) => [link.href, link.label]));
   const pathWithoutLocale = pathname.replace(`/${locale}`, "") || "/";
   const segments = pathWithoutLocale.split("/").filter(Boolean);
 
-  if (segments.length === 0) return null;
+  if (!segments.length) {
+    return null;
+  }
   const getLabel = (href: string, segment: string): string => {
     return (
       linkMap.get(href) ||
@@ -29,10 +33,7 @@ export function Breadcrumbs({ links, locale }: BreadcrumbsProps) {
     <nav aria-label="Breadcrumb">
       <ol className="flex items-center gap-2 px-4 py-3 lg:px-30 lg:py-4">
         <li>
-          <Link
-            href={`/${locale}`}
-            className="text-sm font-medium leading-[22px] text-text-secondary hover:text-primary transition-colors"
-          >
+          <Link href={`/${locale}`} className={LINK_CLASSES}>
             {homeLabel}
           </Link>
         </li>
@@ -52,10 +53,7 @@ export function Breadcrumbs({ links, locale }: BreadcrumbsProps) {
                   {getLabel(segmentPath, segment)}
                 </span>
               ) : (
-                <Link
-                  href={fullPath}
-                  className="text-sm font-medium leading-[22px] text-text-secondary hover:text-primary transition-colors"
-                >
+                <Link href={fullPath} className={LINK_CLASSES}>
                   {getLabel(segmentPath, segment)}
                 </Link>
               )}
