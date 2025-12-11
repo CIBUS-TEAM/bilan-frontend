@@ -43,7 +43,7 @@ export function TextCards({ data }: { data: TextCardsProps }) {
       {isCardsGridColumn ? (
         <div className="flex flex-col gap-6">
           {cards.map((card) => (
-            <div
+            <article
               key={card.id}
               className="flex flex-col gap-4 md:flex-row-reverse"
             >
@@ -58,9 +58,9 @@ export function TextCards({ data }: { data: TextCardsProps }) {
               </div>
               <div className="flex flex-col p-4 bg-white rounded-2xl gap-8 shadow-card lg:p-6">
                 <div className="flex flex-col gap-2 lg:gap-4">
-                  <span className="text-xl font-semibold leading-7 lg:text-[28px] lg:leading-[38px]">
+                  <h3 className="text-xl! font-semibold! leading-7! lg:text-[28px]! lg:leading-[38px]!">
                     {card.title}
-                  </span>
+                  </h3>
                   <p className="text-base font-medium leading-[26px] text-text-secondary lg:text-lg lg:leading-7">
                     {card.description}
                   </p>
@@ -74,13 +74,13 @@ export function TextCards({ data }: { data: TextCardsProps }) {
                   {card.button.label}
                 </Button>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       ) : (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {cards.map((card) => (
-            <div className="flex flex-col gap-4 lg:gap-0" key={card.id}>
+            <article className="flex flex-col gap-4 lg:gap-0" key={card.id}>
               <div className="relative w-full rounded-2xl aspect-3/2 lg:rounded-b-none">
                 <Image
                   className="rounded-2xl lg:rounded-b-none"
@@ -93,9 +93,9 @@ export function TextCards({ data }: { data: TextCardsProps }) {
               <div className="p-4 bg-white rounded-2xl flex flex-col gap-8 shadow-card flex-1 lg:lg:rounded-t-none">
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col gap-2 lg:gap-4">
-                    <span className="text-xl font-semibold leading-7 lg:text-[28px] lg:leading-[38px]">
+                    <h3 className="text-xl! font-semibold! leading-7! lg:text-[28px]! lg:leading-[38px]!">
                       {card.title}
-                    </span>
+                    </h3>
                     <p className="text-base font-medium leading-[26px] text-text-secondary lg:text-lg lg:leading-7">
                       {card.description}
                     </p>
@@ -129,7 +129,7 @@ export function TextCards({ data }: { data: TextCardsProps }) {
                   {card.button.label}
                 </Button>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       )}
