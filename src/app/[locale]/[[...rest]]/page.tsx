@@ -63,7 +63,11 @@ export default async function Home(props: Props) {
                 populate: {
                   badges: true,
                   button: true,
-                  populate: { image: { populate: { image: true } } },
+                  image: {
+                    populate: {
+                      image: true,
+                    },
+                  },
                 },
               },
             },
