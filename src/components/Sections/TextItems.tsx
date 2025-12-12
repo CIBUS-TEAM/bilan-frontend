@@ -1,4 +1,4 @@
-import CountUpWrapper from "../ui/CountUp/CountUpWrapper";
+import CountUp from "../ui/CountUp/CountUpWrapper";
 import SectionHeaders from "../ui/Headers/SectionHeaders";
 import Section from "../ui/Section/Section";
 import { cn } from "@/utilities/styles";
@@ -48,9 +48,7 @@ export function TextItems({ data }: { data: TextItemsProps }) {
             const numericValue = item.title.match(/\d+/)?.[0] || "0";
             return (
               <div key={item.id} className="flex flex-col gap-2">
-                <span className="text-[32px] font-bold leading-[42px] text-primary lg:text-[56px] lg:leading-16">
-                  <CountUpWrapper number={Number(numericValue)} />
-                </span>
+                <CountUp end={Number(numericValue)} />
                 <span className="text-base font-medium leading-[26px] text-text-secondary lg:text-lg lg:leading-7">
                   {item.description}
                 </span>
