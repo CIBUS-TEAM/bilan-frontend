@@ -44,15 +44,16 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     };
   }
 
-  const seo = data.data[0].seo;
-  const metaImageUrl = seo?.metaImage?.url || undefined;
+  const seo = data?.data?.[0]?.seo || {};
+  const { metaTitle, metaDescription, metaImage } = seo;
+
   return {
-    title: seo?.metaTitle || undefined,
-    description: seo?.metaDescription || undefined,
+    title: metaTitle,
+    description: metaDescription,
     openGraph: {
-      title: seo?.metaTitle || undefined,
-      description: seo?.metaDescription || undefined,
-      images: metaImageUrl ? [metaImageUrl] : undefined,
+      title: metaTitle,
+      description: metaDescription,
+      images: metaImage?.url ? [metaImage.url] : undefined,
     },
   };
 }
