@@ -45,7 +45,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 
   const seo = data.data[0].seo;
-  const metaImageUrl = seo?.metaImage?.url ? `${seo.metaImage.url}` : undefined;
+  const metaImageUrl = seo?.metaImage?.url || undefined;
   return {
     title: seo?.metaTitle || undefined,
     description: seo?.metaDescription || undefined,
