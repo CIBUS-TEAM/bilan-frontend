@@ -5,6 +5,7 @@ import { cn } from "@/utilities/styles";
 interface SectionHeadersProps extends SectionHeadersData {
   isHero?: boolean;
   isDesktopSecondary?: boolean;
+  hasItems?: boolean;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export function SectionHeaders({
   description,
   isHero,
   isDesktopSecondary,
+  hasItems,
   className,
 }: SectionHeadersProps) {
   return (
@@ -45,18 +47,24 @@ export function SectionHeaders({
           <Badge containerClassName="mb-6" withIcon text={badge} />
         )
       ) : null}
-      {isHero ? (
+      {isDesktopSecondary ? (
         <h1
           className={cn(
-            "mb-4",
-            { "lg:text-white": isDesktopSecondary },
+            "mb-4 ",
+            {
+              "lg:text-white ": isDesktopSecondary,
+            },
             { "text-center": isCentered }
           )}
         >
           {title}
         </h1>
       ) : (
-        <h2 className={cn("mb-4 lg:mb-6", { "text-center": isCentered })}>
+        <h2
+          className={cn("mb-4 lg:mb-6", {
+            "text-center": isCentered,
+          })}
+        >
           {title}
         </h2>
       )}
@@ -64,9 +72,9 @@ export function SectionHeaders({
         className={cn(
           "text-text-secondary",
           `${
-            isHero
-              ? "text-lg font-semibold leading-7 lg:text-[22px] lg:leading-[30px]"
-              : "text-base font-medium leading-[26px] lg:text-lg lg:leading-7"
+            hasItems
+              ? "text-base font-medium leading-6.5 lg:text-lg lg:leading-7"
+              : "text-lg font-semibold leading-7 lg:text-[1.375rem] lg:leading-7.5"
           }`,
           { "lg:text-white": isDesktopSecondary },
           { "text-center": isCentered }
