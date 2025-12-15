@@ -99,6 +99,7 @@ export async function StrapiContactForm() {
         "flex flex-col items-center",
         "bg-cover bg-[url('/images/form-background-mobile.webp')] lg:bg-[url('/images/form-background-desktop.webp')]"
       )}
+      id="contact-us"
     >
       <SectionHeaders {...headers} />
       <div className="w-full flex flex-col gap-6 lg:flex-row mt-8">
