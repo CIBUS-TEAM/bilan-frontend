@@ -1,3 +1,4 @@
+import CountUp from "../ui/CountUp/CountUpWrapper";
 import SectionHeaders from "../ui/Headers/SectionHeaders";
 import Section from "../ui/Section/Section";
 import { cn } from "@/utilities/styles";
@@ -43,24 +44,25 @@ export function TextItems({ data }: { data: TextItemsProps }) {
       />
       {!!items.length && (
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
-          {items.map((item) => (
-            <div key={item.id} className="flex flex-col gap-2">
-              <span className="text-[32px] font-bold leading-[42px] text-primary lg:text-[56px] lg:leading-16">
-                {item.title}
-              </span>
-              <span className="text-base font-medium leading-[26px] text-text-secondary lg:text-lg lg:leading-7">
-                {item.description}
-              </span>
-            </div>
-          ))}
+          {items.map((item) => {
+            const numericValue = item.title.match(/\d+/)?.[0] || "0";
+            return (
+              <div key={item.id} className="flex flex-col gap-2">
+                <CountUp end={Number(numericValue)} />
+                <span className="text-base font-medium leading-[26px] text-text-secondary lg:text-lg lg:leading-7">
+                  {item.description}
+                </span>
+              </div>
+            );
+          })}
         </div>
       )}
       {!!cards.length && (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 ">
           {cards.map((card) => (
             <div
               className={cn(
-                "bg-white border border-border rounded-2xl shadow-card p-4",
+                "bg-white border border-border rounded-2xl shadow-card p-4 transition-all duration-300 transform hover:-translate-y-2.5",
                 "flex flex-col gap-6"
               )}
               key={card.id}

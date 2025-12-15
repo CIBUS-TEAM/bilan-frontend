@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import { cn } from "@/utilities/styles";
 import Link from "next/link";
 import Image from "next/image";
+import CTAIcon from "../Icons/CTAIcon";
 
 export interface OurProjectsProps {
   __component: string;
@@ -44,15 +45,19 @@ export function OurProjects({ data }: { data: OurProjectsProps }) {
             className="rounded-2xl border border-border bg-background-base"
             href={card.link.href}
           >
-            <div className="w-full rounded-t-2xl aspect-3/2 relative">
+            <div className="relative aspect-3/2 w-full rounded-t-2xl overflow-hidden group">
               <Image
-                className="rounded-t-2xl"
+                className="rounded-t-2xl object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-60"
                 src={card.image.image.url}
                 alt={card.image.alt}
-                title={card.image.alt}
                 fill
               />
+              <div className="absolute inset-0 rounded-t-2xl border border-transparent transition-all duration-300 group-hover:border-primary" />
+              <div className="absolute top-3 right-3 opacity-0 -translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                <CTAIcon size="32px" />
+              </div>
             </div>
+
             <div className="flex gap-3 flex-col p-4 lg:gap-4">
               <span className="text-lg font-semibold leading-7 lg:text-[22px] lg:leading-[30px]">
                 {card.title}
