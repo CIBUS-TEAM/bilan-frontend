@@ -1,11 +1,18 @@
 import NotFoundSection from "@/components/Sections/NotFoundSection";
+import { fetchFromStrapi } from "@/fetch/fetch";
+import { getLocale } from "next-intl/server";
 
 export default async function NotFound() {
-  const data = {
-    title: "Цю сторінку ще не змонтували.",
-    description:
-      "Ми вже працюємо над тим, щоб усе було на своєму місці. Поверніться на головну або оберіть розділ із меню.",
-    buttonText: "Повернутися на головну",
-  };
-  return <NotFoundSection data={data} />;
+  const locale = await getLocale();
+
+  const data = await fetchFromStrapi("/not-found", {
+    locale,
+    populate: {
+      button: true,
+      desktopImage: { populate: { image: true } },
+      mobileImage: { populate: { image: true } },
+    },
+  });
+
+  return <NotFoundSection data={data.data} />;
 }
