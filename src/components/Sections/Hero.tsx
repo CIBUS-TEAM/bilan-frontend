@@ -33,7 +33,7 @@ export function Hero({
   const showDesktopRow = hasItems || (!isImageBackground && hasButtons);
 
   return (
-    <div className="relative overflow-hidden lg:min-h-[800px] flex items-center">
+    <div className="relative overflow-hidden lg:min-h-[800px] flex items-center justify-center">
       <Section>
         <div
           className={cn({
@@ -59,18 +59,28 @@ export function Hero({
                   "lg:gap-4 lg:mt-12": isImageBackground,
                 },
                 {
-                  "lg:flex-col lg:min-w-3xs lg:mt-0":
+                  "lg:flex-col lg:min-w-65 lg:mt-0":
                     !isImageBackground && !hasItems,
                 }
               )}
             >
               {primaryButton && (
-                <Button href={primaryButton.href} withCTAIcon>
+                <Button
+                  href={primaryButton.href}
+                  withCTAIcon
+                  className="border border-primary"
+                >
                   {primaryButton.label}
                 </Button>
               )}
               {secondaryButton && (
-                <Button href={secondaryButton.href} variant="secondary">
+                <Button
+                  href={secondaryButton.href}
+                  variant="secondary"
+                  className={cn("border border-primary text-primary ", {
+                    "lg:text-black": isImageBackground,
+                  })}
+                >
                   {secondaryButton.label}
                 </Button>
               )}
@@ -82,20 +92,20 @@ export function Hero({
           <div className="pt-8 lg:pt-0">
             <HeroImage
               images={images[0]}
-              className="rounded-2xl lg:absolute lg:inset-0 lg:-z-10 lg:h-full lg:rounded-none object-cover min-h-[218px]"
+              className="rounded-2xl lg:absolute lg:inset-0 lg:-z-10 lg:h-full lg:rounded-none object-cover w-screen aspect-2/1"
             />
           </div>
         )}
         {!isImageBackground && images.length === 1 && (
-          <div className="pt-12">
+          <div className="pt-8 lg:pt-12">
             <HeroImage
               images={images[0]}
-              className="rounded-2xl  min-h-[218px]"
+              className="rounded-2xl   w-screen aspect-2/1 "
             />
           </div>
         )}
         {images.length > 1 && (
-          <div className="pt-12">
+          <div className="pt-8 lg:pt-12">
             <HeroGallery images={images} className="rounded-2xl" />
           </div>
         )}

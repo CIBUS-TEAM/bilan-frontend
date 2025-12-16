@@ -10,7 +10,7 @@ export default function HeroItems({ items }: { items: HeroItem[] }) {
       {items.map((item) => (
         <li
           key={item.id}
-          className="rounded-lg border border-text-secondary py-2 px-3 lg:border-none min-w-40"
+          className="rounded-lg border border-border py-2 px-3 lg:border-none min-w-40"
         >
           <p className="text-[0.875rem] lg:text-base text-text-secondary font-medium pb-2 lg:pb-3">
             {item.title}

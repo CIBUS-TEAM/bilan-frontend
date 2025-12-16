@@ -2,6 +2,7 @@ import Image from "next/image";
 
 export type HeroImages = {
   alt: string;
+  id: number;
   image: {
     url: string;
     width?: number;
@@ -20,9 +21,9 @@ export default function HeroImage({
     <Image
       src={images.image.url}
       alt={images.alt}
-      width={images.image.width || 1440}
-      height={images.image.height || 800}
-      className={className}
+      width={images.image.width}
+      height={images.image.height}
+      className={`object-cover w-full h-full ${className}`}
     />
   );
 }
