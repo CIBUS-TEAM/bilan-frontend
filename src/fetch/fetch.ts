@@ -8,7 +8,8 @@ export async function fetchFromStrapi(path: string, query: object) {
     headers: {
       Authorization: `Bearer ${process.env.STRAPI_READ_ONLY_API_KEY}`,
     },
-    // next: { revalidate: 60 },
+    cache: "force-cache",
+    next: { revalidate: 900 },
   });
 
   if (!res.ok) throw new Error("Strapi fetch failed");

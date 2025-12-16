@@ -1,28 +1,56 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import StrapiContactForm from "@/components/Form/Form";
-import Cards from "@/components/Sections/Cards";
+// import Cards from "@/components/Sections/Cards";
 import CTABanner from "@/components/Sections/CTABanner";
-import Hero from "@/components/Sections/Hero";
-import OurProjects from "@/components/Sections/OurProjects";
-import Pricing from "@/components/Sections/Pricing";
-import Stages from "@/components/Sections/Stages";
-import TextCards from "@/components/Sections/TextCards";
-import TextItems from "@/components/Sections/TextItems";
+// import Hero from "@/components/Sections/Hero";
+// import OurProjects from "@/components/Sections/OurProjects";
+// import Pricing from "@/components/Sections/Pricing";
+// import Stages from "@/components/Sections/Stages";
+// import TextCards from "@/components/Sections/TextCards";
+// import TextItems from "@/components/Sections/TextItems";
 import { fetchFromStrapi } from "@/fetch/fetch";
 import { notFound } from "next/navigation";
 import { PageProps } from "@/types/types";
 import { Metadata } from "next";
+import {
+  // CardsSectionData,
+  HeroSectionData,
+  // TextItemsSectionData,
+  // TextCardsSectionData,
+  // StagesSectionData,
+  // PricingSectionData,
+  // OurProjectsSectionData,
+  CTABannerSectionData,
+} from "@/types/dynamicComponents";
 
-const components = {
-  "sections.text-items": TextItems,
-  "sections.text-cards": TextCards,
-  "sections.stages": Stages,
-  "sections.pricing": Pricing,
-  "sections.our-projects": OurProjects,
-  "sections.hero": Hero,
+const components: {
+  // "sections.hero": React.FC<{ data: HeroSectionData }>;
+  // "sections.text-items": React.FC<{ data: TextItemsSectionData }>;
+  // "sections.text-cards": React.FC<{ data: TextCardsSectionData }>;
+  // "sections.stages": React.FC<{ data: StagesSectionData }>;
+  // "sections.pricing": React.FC<{ data: PricingSectionData }>;
+  // "sections.our-projects": React.FC<{ data: OurProjectsSectionData }>;
+  "sections.cta-banner": React.FC<{ data: CTABannerSectionData }>;
+  // "sections.cards": React.FC<{ data: CardsSectionData }>;
+} = {
+  // "sections.hero": Hero,
+  // "sections.text-items": TextItems,
+  // "sections.text-cards": TextCards,
+  // "sections.stages": Stages,
+  // "sections.pricing": Pricing,
+  // "sections.our-projects": OurProjects,
   "sections.cta-banner": CTABanner,
-  "sections.cards": Cards,
+  // "sections.cards": Cards,
 };
+
+type PageSection =
+  | HeroSectionData
+  // | TextItemsSectionData
+  // | TextCardsSectionData
+  // | StagesSectionData
+  // | PricingSectionData
+  // | OurProjectsSectionData
+  | CTABannerSectionData;
+// | CardsSectionData;
 
 type Props = PageProps<{
   rest: string[];
@@ -153,12 +181,11 @@ export default async function Home(props: Props) {
   return (
     <div>
       <main>
-        {data.data[0].content.map((item: any) => {
+        {data.data[0].content.map((item: PageSection) => {
           const key = item.__component as keyof typeof components;
           const Component = components[key];
           if (!Component) return null;
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
+
           return <Component key={item.id + item.__component} data={item} />;
         })}
 
