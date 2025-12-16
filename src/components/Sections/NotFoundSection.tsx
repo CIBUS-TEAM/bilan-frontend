@@ -4,34 +4,35 @@ import { Page404Data } from "@/types/types";
 import Section from "../ui/Section/Section";
 
 function NotFoundContent({ data }: { data: Page404Data }) {
+  const { title, description, button } = data;
+
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-4">
-        <h1 className="text-text-main md:text-white">{data.title}</h1>
-        <h4 className="text-text-secondary md:text-white">
-          {data.description}
-        </h4>
+        <h1 className="text-text-main md:text-white">{title}</h1>
+        <h4 className="text-text-secondary md:text-white">{description}</h4>
       </div>
 
       <Button
-        href="/"
+        href={button.href}
         variant="secondary"
         className="border border-primary w-fit"
       >
-        {data.buttonText}
+        {button.label}
       </Button>
     </div>
   );
 }
 
 export function NotFoundSection({ data }: { data: Page404Data }) {
+  const { mobileImage, desktopImage } = data;
   return (
     <>
       <Section className="relative min-h-[730px] hidden md:flex overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-gradient-404">
           <Image
-            src="/images/404-desktop.webp"
-            alt=""
+            src={desktopImage.image.url}
+            alt={desktopImage.alt}
             fill
             className="object-cover"
             priority
@@ -46,8 +47,8 @@ export function NotFoundSection({ data }: { data: Page404Data }) {
       <Section className="md:hidden py-8">
         <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-8 bg-gradient-404">
           <Image
-            src="/images/404-mobile.webp"
-            alt=""
+            src={mobileImage.image.url}
+            alt={mobileImage.alt}
             fill
             className="object-cover"
             priority

@@ -29,8 +29,17 @@ export interface StrapiImage {
   alt: string;
   image: StrapiImageData;
 }
+
 export interface Page404Data {
+  id: number;
+  documentId: string;
   title: string;
   description: string;
-  buttonText: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  locale: string;
+  button: StrapiButton;
+  desktopImage: StrapiImage;
+  mobileImage: StrapiImage;
 }
