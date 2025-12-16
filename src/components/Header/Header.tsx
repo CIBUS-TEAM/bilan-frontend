@@ -5,6 +5,7 @@ import { getLocale } from "next-intl/server";
 import { cn } from "@/utilities/styles";
 import NavLink from "../NavLink/NavLink";
 import BurgerMenu from "./BurgerMenu";
+import Link from "next/link";
 
 export async function StrapiHeader() {
   const locale = await getLocale();
@@ -25,7 +26,9 @@ export async function StrapiHeader() {
         "sticky top-0 left-0 w-full z-2 bg-white"
       )}
     >
-      <StrapiImage image={logo} />
+      <Link href="/">
+        <StrapiImage image={logo} />
+      </Link>
       <div className="gap-8 hidden xl:flex">
         {links.map(
           (link: {
