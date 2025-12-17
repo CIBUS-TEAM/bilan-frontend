@@ -34,7 +34,7 @@ export function Hero({
 
   return (
     <div className="relative overflow-hidden lg:min-h-[800px] flex items-center justify-center">
-      <Section>
+      <Section className={showDesktopRow ? "lg:pt-0" : ""}>
         <div
           className={cn({
             "lg:flex lg:flex-row lg:items-start lg:justify-between lg:gap-x-14":
@@ -92,7 +92,7 @@ export function Hero({
           <div className="pt-8 lg:pt-0">
             <HeroImage
               images={images[0]}
-              className="rounded-2xl lg:absolute lg:inset-0 lg:-z-10 lg:h-full lg:rounded-none object-cover w-screen aspect-2/1"
+              className="rounded-2xl lg:absolute lg:inset-0 lg:-z-10 lg:h-full lg:rounded-none object-cover w-screen aspect-343/218 md:aspect-2/1"
             />
           </div>
         )}
@@ -100,7 +100,7 @@ export function Hero({
           <div className="pt-8 lg:pt-12">
             <HeroImage
               images={images[0]}
-              className="rounded-2xl   w-screen aspect-2/1 "
+              className="rounded-2xl   w-screen aspect-343/218 md:aspect-2/1 "
             />
           </div>
         )}
