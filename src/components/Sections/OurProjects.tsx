@@ -17,10 +17,10 @@ export function OurProjects({ data }: { data: OurProjectsSectionData }) {
         {cards.map((card) => (
           <Link
             key={card.id}
-            className="rounded-2xl border border-border bg-background-base"
+            className="rounded-2xl ring ring-border bg-background-base"
             href={card.link.href}
           >
-            <div className="relative aspect-3/2 w-full rounded-t-2xl overflow-hidden group">
+            <div className="relative aspect-343/298  md:aspect-384/298 w-full rounded-t-2xl overflow-hidden group">
               <Image
                 className="rounded-t-2xl object-cover transition-all duration-500 group-hover:scale-105 group-hover:brightness-60"
                 src={card.image.image.url}

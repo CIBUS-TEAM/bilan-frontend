@@ -26,7 +26,7 @@ export function Stages({ data }: { data: StagesSectionData }) {
           />
         )}
         <div
-          className="w-full rounded-2xl aspect-343/218 bg-cover hidden sm:block lg:max-w-[40%]"
+          className="w-full rounded-2xl aspect-343/218 bg-cover hidden sm:block lg:max-w-[40.5%] lg:aspect-487/586"
           style={{
             backgroundImage: `url(${image.image.url}), linear-gradient(180deg,#0060DE 0%,#7EACDD 100%)`,
           }}
@@ -37,7 +37,7 @@ export function Stages({ data }: { data: StagesSectionData }) {
               key={item.id}
               className={cn(
                 "p-4 bg-background-base flex flex-col gap-6 lg:flex-row lg:items-center",
-                "border border-border shadow-card rounded-2xl"
+                "ring ring-border shadow-card rounded-2xl"
               )}
             >
               <span className="text-[32px] font-bold leading-[42px] text-primary lg:text-[56px] lg:leading-16">

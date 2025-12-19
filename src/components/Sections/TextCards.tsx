@@ -25,7 +25,7 @@ export function TextCards({ data }: { data: TextCardsSectionData }) {
               className="flex flex-col gap-4 md:flex-row-reverse"
             >
               {card.image && (
-                <div className="relative w-full rounded-2xl aspect-3/2 md:max-w-[388px] md:min-w-[388px]">
+                <div className="relative w-full rounded-2xl aspect-388/279 md:max-w-[388px] md:min-w-[388px]">
                   <Image
                     className="rounded-2xl"
                     src={card.image.image.url}
@@ -59,9 +59,12 @@ export function TextCards({ data }: { data: TextCardsSectionData }) {
       ) : (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {cards?.map((card) => (
-            <article className="flex flex-col gap-4 lg:gap-0" key={card.id}>
+            <article
+              className="flex flex-col gap-4 lg:gap-0 ring ring-border rounded-2xl"
+              key={card.id}
+            >
               {card.image && (
-                <div className="relative w-full rounded-2xl aspect-3/2 lg:rounded-b-none">
+                <div className="relative w-full rounded-2xl aspect-384/298 lg:rounded-b-none">
                   <Image
                     className="rounded-2xl lg:rounded-b-none"
                     src={card.image.image.url}

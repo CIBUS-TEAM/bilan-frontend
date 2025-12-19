@@ -8,17 +8,22 @@ import Button from "../Button/Button";
 interface BurgerMenuProps {
   links: { id: number; label: string; href: string; newTab: boolean }[];
   button: { id: number; label: string; href: string; newTab: boolean };
+  locale: string;
 }
 
-export default function BurgerMenu({ links, button }: BurgerMenuProps) {
+export default function BurgerMenu({ links, button, locale }: BurgerMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClose = () => setIsOpen(false);
-
+  const openBurgerMenu =
+    locale === "uk" ? "Відкрити меню навігації" : "Open navigation menu";
+  const closeBurgerMenu =
+    locale === "uk" ? "Закрити меню навігації" : "Close navigation menu";
   return (
     <div className="relative xl:hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? openBurgerMenu : closeBurgerMenu}
         className="cursor-pointer w-8 h-6 flex flex-col justify-between items-center"
       >
         <span

@@ -55,7 +55,7 @@ export async function StrapiHeader() {
       >
         {button.label}
       </Button>
-      <BurgerMenu links={links} button={button} />
+      <BurgerMenu links={links} button={button} locale={locale} />
     </header>
   );
 }
