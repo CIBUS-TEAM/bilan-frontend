@@ -14,7 +14,6 @@ export function SectionHeaders({
   badge,
   title,
   description,
-  isHero,
   isDesktopSecondary,
   hasItems,
   className,

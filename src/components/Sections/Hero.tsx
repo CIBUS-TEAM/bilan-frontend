@@ -1,14 +1,11 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
 import { HeroSectionData } from "@/types/dynamicComponents";
 import SectionHeaders from "../ui/Headers/SectionHeaders";
 import Section from "../ui/Section/Section";
 import Button from "../Button/Button";
 import { cn } from "@/utilities/styles";
-import HeroItems, { HeroItem } from "../ui/Hero/HeroItems";
+import HeroItems from "../ui/Hero/HeroItems";
 import HeroGallery from "../ui/Hero/HeroGallery";
-import HeroImage, { HeroImages } from "../ui/Hero/HeroImage";
+import HeroImage from "../ui/Hero/HeroImage";
 
 export function Hero({ data }: { data: HeroSectionData }) {
   const {
@@ -20,7 +17,7 @@ export function Hero({ data }: { data: HeroSectionData }) {
     items,
   } = data;
 
-  const hasItems = items.length > 0;
+  const hasItems = !!items?.length && items.length > 0;
   const hasButtons = primaryButton || secondaryButton;
   const showDesktopRow = hasItems || (!isImageBackground && hasButtons);
 

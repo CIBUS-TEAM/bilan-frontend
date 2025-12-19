@@ -1,36 +1,30 @@
-import { SectionHeadersData } from "@/types/types";
+import { StagesSectionData } from "@/types/dynamicComponents";
 import SectionHeaders from "../ui/Headers/SectionHeaders";
 import Section from "../ui/Section/Section";
 import { cn } from "@/utilities/styles";
 
-type StagesProps = {
-  __component: string;
-  id: number;
-  headers: SectionHeadersData;
-  items: {
-    id: number;
-    title: string;
-    description: string;
-  }[];
-  image: {
-    alt: string;
-    image: { url: string; formats: { small: { url: string } } };
-  };
-};
-
-export function Stages({ data }: { data: StagesProps }) {
+export function Stages({ data }: { data: StagesSectionData }) {
   const { headers, items, image } = data;
 
   return (
     <Section className="flex flex-col gap-8 lg:gap-12">
       <SectionHeaders {...headers} className="mx-auto" />
       <div className="flex flex-col gap-4 lg:flex-row lg:gap-6">
-        <div
-          className="w-full rounded-2xl aspect-343/218 bg-cover sm:hidden"
-          style={{
-            backgroundImage: `url(${image.image.formats.small?.url}), linear-gradient(180deg,#0060DE 0%,#7EACDD 100%)`,
-          }}
-        />
+        {image.image?.formats?.small?.url ? (
+          <div
+            className="w-full rounded-2xl aspect-343/218 bg-cover sm:hidden"
+            style={{
+              backgroundImage: `url(${image.image.formats.small.url}), linear-gradient(180deg,#0060DE 0%,#7EACDD 100%)`,
+            }}
+          />
+        ) : (
+          <div
+            className="w-full rounded-2xl aspect-343/218 bg-cover sm:hidden"
+            style={{
+              backgroundImage: `url(${image.image.url}), linear-gradient(180deg,#0060DE 0%,#7EACDD 100%)`,
+            }}
+          />
+        )}
         <div
           className="w-full rounded-2xl aspect-343/218 bg-cover hidden sm:block lg:max-w-[40%]"
           style={{

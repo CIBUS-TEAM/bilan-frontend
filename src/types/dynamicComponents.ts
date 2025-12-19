@@ -23,8 +23,9 @@ export interface CardsSectionData {
   id: number;
   __component: "sections.cards";
   cards: {
+    id: number;
     headers?: HeadersData;
-    items?: { text: string }[];
+    items?: { id: number; text: string }[];
   }[];
 }
 
@@ -45,7 +46,7 @@ export interface HeroSectionData {
   primaryButton?: LinkData;
   secondaryButton?: LinkData;
   images: ImageData[];
-  items?: { title: string; description: string }[];
+  items?: { id: number; title: string; description: string }[];
   isImageBackground: boolean;
 }
 
@@ -54,12 +55,13 @@ export interface OurProjectsSectionData {
   __component: "sections.our-projects";
   headers: HeadersData;
   cards: {
+    id: number;
     title: string;
     description: string;
     year: number;
     image: ImageData;
     link: LinkData;
-  };
+  }[];
   button?: LinkData;
 }
 
@@ -70,7 +72,7 @@ export interface PricingSectionData {
   typeColumnTitle: string;
   priceColumnTitle: string;
   termColumnTitle: string;
-  items?: { type: string; price: string; term: string }[];
+  items?: { id: number; type: string; price: string; term: string }[];
   button?: LinkData;
 }
 
@@ -79,7 +81,7 @@ export interface StagesSectionData {
   __component: "sections.stages";
   headers: HeadersData;
   image: ImageData;
-  items: { title: string; description: string }[];
+  items: { id: number; title: string; description: string }[];
 }
 
 export interface TextCardsSectionData {
@@ -87,9 +89,10 @@ export interface TextCardsSectionData {
   __component: "sections.text-cards";
   headers: HeadersData;
   cards?: {
+    id: number;
     title: string;
     description: string;
-    badges?: { text: string }[];
+    badges?: { id: number; text: string }[];
     button: LinkData;
     image?: ImageData;
   }[];
@@ -100,8 +103,9 @@ export interface TextItemsSectionData {
   id: number;
   __component: "sections.text-items";
   headers: HeadersData;
-  items?: { title: string; description: string }[];
+  items?: { id: number; title: string; description: string }[];
   cards?: {
+    id: number;
     icon: ImageData;
     title: string;
     description: string;

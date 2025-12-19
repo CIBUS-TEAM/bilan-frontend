@@ -1,23 +1,8 @@
+import { CardsSectionData } from "@/types/dynamicComponents";
 import Badge from "../ui/Badge/Badge";
 import Section from "../ui/Section/Section";
 
-interface CardsSectionProps {
-  __component: string;
-  id: number;
-  cards: {
-    id: number;
-    headers: {
-      id: number;
-      isCentered: boolean;
-      badge: string;
-      title: string;
-      description: string;
-    };
-    items: { id: number; text: string }[];
-  }[];
-}
-
-export function Cards({ data }: { data: CardsSectionProps }) {
+export function Cards({ data }: { data: CardsSectionData }) {
   return (
     <Section className="flex flex-col gap-4 lg:gap-6">
       {data.cards.map((card) => (
@@ -37,7 +22,7 @@ export function Cards({ data }: { data: CardsSectionProps }) {
                 {card.headers.description}
               </p>
             )}
-            {!!card.items.length && (
+            {!!card?.items?.length && (
               <ul className="list-disc pl-7 text-base font-medium leading-[26px] text-text-secondary lg:text-lg lg:leading-7">
                 {card.items.map((item) => (
                   <li key={item.id}>{item.text}</li>

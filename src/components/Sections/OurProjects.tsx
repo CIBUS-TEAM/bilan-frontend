@@ -5,34 +5,9 @@ import { cn } from "@/utilities/styles";
 import Link from "next/link";
 import Image from "next/image";
 import CTAIcon from "../Icons/CTAIcon";
+import { OurProjectsSectionData } from "@/types/dynamicComponents";
 
-export interface OurProjectsProps {
-  __component: string;
-  id: number;
-  headers: {
-    id: number;
-    isCentered: boolean;
-    badge: string;
-    title: string;
-    description: string;
-  };
-  button: {
-    id: number;
-    label: string;
-    href: string;
-    newTab: boolean;
-  };
-  cards: {
-    description: string;
-    id: number;
-    title: string;
-    year: number;
-    link: { id: number; href: string; label: string; newTab: boolean };
-    image: { alt: string; image: { url: string } };
-  }[];
-}
-
-export function OurProjects({ data }: { data: OurProjectsProps }) {
+export function OurProjects({ data }: { data: OurProjectsSectionData }) {
   const { headers, button, cards } = data;
 
   return (
@@ -75,14 +50,16 @@ export function OurProjects({ data }: { data: OurProjectsProps }) {
           </Link>
         ))}
       </div>
-      <Button
-        className="sm:w-fit sm:mx-auto"
-        variant="primary"
-        withCTAIcon
-        href={button.href}
-      >
-        {button.label}
-      </Button>
+      {button && (
+        <Button
+          className="sm:w-fit sm:mx-auto"
+          variant="primary"
+          withCTAIcon
+          href={button.href}
+        >
+          {button.label}
+        </Button>
+      )}
     </Section>
   );
 }
