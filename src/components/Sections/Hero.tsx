@@ -1,17 +1,9 @@
-import { SectionHeadersData, StrapiButton } from "@/types/types";
+import { HeroSectionData } from "@/types/dynamicComponents";
 import SectionHeaders from "../ui/Headers/SectionHeaders";
 import Section from "../ui/Section/Section";
 import Button from "../Button/Button";
 
-export function Hero({
-  data,
-}: {
-  data: {
-    headers: SectionHeadersData;
-    primaryButton?: StrapiButton;
-    secondaryButton?: StrapiButton;
-  };
-}) {
+export function Hero({ data }: { data: HeroSectionData }) {
   const { headers, primaryButton, secondaryButton } = data;
 
   return (

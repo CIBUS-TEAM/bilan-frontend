@@ -1,7 +1,7 @@
 import StrapiContactForm from "@/components/Form/Form";
 // import Cards from "@/components/Sections/Cards";
 import CTABanner from "@/components/Sections/CTABanner";
-// import Hero from "@/components/Sections/Hero";
+import Hero from "@/components/Sections/Hero";
 // import OurProjects from "@/components/Sections/OurProjects";
 // import Pricing from "@/components/Sections/Pricing";
 // import Stages from "@/components/Sections/Stages";
@@ -22,26 +22,6 @@ import {
   CTABannerSectionData,
 } from "@/types/dynamicComponents";
 
-const components: {
-  // "sections.hero": React.FC<{ data: HeroSectionData }>;
-  // "sections.text-items": React.FC<{ data: TextItemsSectionData }>;
-  // "sections.text-cards": React.FC<{ data: TextCardsSectionData }>;
-  // "sections.stages": React.FC<{ data: StagesSectionData }>;
-  // "sections.pricing": React.FC<{ data: PricingSectionData }>;
-  // "sections.our-projects": React.FC<{ data: OurProjectsSectionData }>;
-  "sections.cta-banner": React.FC<{ data: CTABannerSectionData }>;
-  // "sections.cards": React.FC<{ data: CardsSectionData }>;
-} = {
-  // "sections.hero": Hero,
-  // "sections.text-items": TextItems,
-  // "sections.text-cards": TextCards,
-  // "sections.stages": Stages,
-  // "sections.pricing": Pricing,
-  // "sections.our-projects": OurProjects,
-  "sections.cta-banner": CTABanner,
-  // "sections.cards": Cards,
-};
-
 type PageSection =
   | HeroSectionData
   // | TextItemsSectionData
@@ -51,6 +31,31 @@ type PageSection =
   // | OurProjectsSectionData
   | CTABannerSectionData;
 // | CardsSectionData;
+
+function renderSection(item: PageSection) {
+  const componentKey = item.__component;
+
+  switch (componentKey) {
+    case "sections.hero":
+      return <Hero key={item.id} data={item} />;
+    case "sections.cta-banner":
+      return <CTABanner key={item.id} data={item} />;
+    // case "sections.text-items":
+    //   return <TextItems key={item.id} data={item} />;
+    // case "sections.text-cards":
+    //   return <TextCards key={item.id} data={item} />;
+    // case "sections.stages":
+    //   return <Stages key={item.id} data={item} />;
+    // case "sections.pricing":
+    //   return <Pricing key={item.id} data={item} />;
+    // case "sections.our-projects":
+    //   return <OurProjects key={item.id} data={item} />;
+    // case "sections.cards":
+    //   return <Cards key={item.id} data={item} />;
+    default:
+      return null;
+  }
+}
 
 type Props = PageProps<{
   rest: string[];
@@ -181,14 +186,7 @@ export default async function Home(props: Props) {
   return (
     <div>
       <main>
-        {data.data[0].content.map((item: PageSection) => {
-          const key = item.__component as keyof typeof components;
-          const Component = components[key];
-          if (!Component) return null;
-
-          return <Component key={item.id + item.__component} data={item} />;
-        })}
-
+        {data.data[0].content.map((item: PageSection) => renderSection(item))}
         <StrapiContactForm />
       </main>
     </div>
