@@ -1,34 +1,11 @@
+import { TextItemsSectionData } from "@/types/dynamicComponents";
 import CountUp from "../ui/CountUp/CountUpWrapper";
 import SectionHeaders from "../ui/Headers/SectionHeaders";
 import Section from "../ui/Section/Section";
 import { cn } from "@/utilities/styles";
 import Image from "next/image";
 
-export interface TextItemsProps {
-  __component: "sections.text-items";
-  id: number;
-  isBackgroundGrid: boolean;
-  headers: {
-    id: number;
-    isCentered: boolean;
-    badge: string;
-    title: string;
-    description: string;
-  };
-  items: {
-    id: number;
-    title: string;
-    description: string;
-  }[];
-  cards: {
-    id: number;
-    icon: { alt: string; image: { url: string } };
-    title: string;
-    description: string;
-  }[];
-}
-
-export function TextItems({ data }: { data: TextItemsProps }) {
+export function TextItems({ data }: { data: TextItemsSectionData }) {
   const { headers, isBackgroundGrid, cards, items } = data;
 
   return (
@@ -42,7 +19,7 @@ export function TextItems({ data }: { data: TextItemsProps }) {
         {...headers}
         className={cn({ "mx-auto": headers.isCentered })}
       />
-      {!!items.length && (
+      {!!items?.length && (
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
           {items.map((item) => {
             const numericValue = item.title.match(/\d+/)?.[0] || "0";
@@ -57,7 +34,7 @@ export function TextItems({ data }: { data: TextItemsProps }) {
           })}
         </div>
       )}
-      {!!cards.length && (
+      {!!cards?.length && (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 ">
           {cards.map((card) => (
             <div

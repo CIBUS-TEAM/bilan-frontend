@@ -1,21 +1,10 @@
 import Image from "next/image";
 import Button from "../Button/Button";
 import Section from "../ui/Section/Section";
+import { CTABannerSectionData } from "@/types/dynamicComponents";
 
-export function CTABanner({
-  data,
-}: {
-  data: {
-    __component: string;
-    title: string;
-    description: string;
-    button: { label: string; href: string };
-    mobileImage: { alt: string; image: { url: string } };
-    desktopImage: { alt: string; image: { url: string } };
-  };
-}) {
+export function CTABanner({ data }: { data: CTABannerSectionData }) {
   const { title, description, button, mobileImage, desktopImage } = data;
-
   return (
     <Section className="bg-[linear-gradient(180deg,#0060DE_0%,#7EACDD_100%)] rounded-xl relative">
       <div className="max-w-[545px] z-1 relative">

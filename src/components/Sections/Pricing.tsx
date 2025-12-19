@@ -1,26 +1,10 @@
-import { SectionHeadersData } from "@/types/types";
 import SectionHeaders from "../ui/Headers/SectionHeaders";
 import Section from "../ui/Section/Section";
 import { cn } from "@/utilities/styles";
 import Button from "../Button/Button";
+import { PricingSectionData } from "@/types/dynamicComponents";
 
-export type PricingSectionProps = {
-  __component: string;
-  id: number;
-  typeColumnTitle: string;
-  priceColumnTitle: string;
-  termColumnTitle: string;
-  headers: SectionHeadersData;
-  items: {
-    id: number;
-    type: string;
-    price: string;
-    term: string;
-  }[];
-  button: { label: string; href: string };
-};
-
-export function Pricing({ data }: { data: PricingSectionProps }) {
+export function Pricing({ data }: { data: PricingSectionData }) {
   const {
     typeColumnTitle,
     priceColumnTitle,
@@ -40,7 +24,7 @@ export function Pricing({ data }: { data: PricingSectionProps }) {
       <SectionHeaders {...headers} className="mx-auto" />
       {/* Mobile */}
       <div className="flex flex-col gap-4 md:hidden">
-        {items.map((item) => (
+        {items?.map((item) => (
           <div
             className={cn(
               "p-4 flex flex-col gap-6",
@@ -81,7 +65,7 @@ export function Pricing({ data }: { data: PricingSectionProps }) {
           <span className="flex-1">{termColumnTitle}</span>
         </div>
         <div className="flex flex-col gap-2 text-base font-medium leading-[26px]">
-          {items.map((item) => (
+          {items?.map((item) => (
             <div
               key={item.id}
               className="flex bg-white rounded-2xl lg:gap-20 border border-border shadow-card p-4"
@@ -93,14 +77,16 @@ export function Pricing({ data }: { data: PricingSectionProps }) {
           ))}
         </div>
       </div>
-      <Button
-        className="sm:w-fit sm:mx-auto"
-        variant="primary"
-        withCTAIcon
-        href={button.href}
-      >
-        {button.label}
-      </Button>
+      {button && (
+        <Button
+          className="sm:w-fit sm:mx-auto"
+          variant="primary"
+          withCTAIcon
+          href={button.href}
+        >
+          {button.label}
+        </Button>
+      )}
     </Section>
   );
 }

@@ -10,8 +10,8 @@ export interface PageProps<TParams = object> {
 export interface SectionHeadersData {
   isCentered: boolean;
   badge?: string;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 }
 
 export interface StrapiButton {

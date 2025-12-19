@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import StrapiContactForm from "@/components/Form/Form";
 import Cards from "@/components/Sections/Cards";
 import CTABanner from "@/components/Sections/CTABanner";
@@ -12,17 +11,51 @@ import { fetchFromStrapi } from "@/fetch/fetch";
 import { notFound } from "next/navigation";
 import { PageProps } from "@/types/types";
 import { Metadata } from "next";
+import {
+  CardsSectionData,
+  HeroSectionData,
+  TextItemsSectionData,
+  TextCardsSectionData,
+  StagesSectionData,
+  PricingSectionData,
+  OurProjectsSectionData,
+  CTABannerSectionData,
+} from "@/types/dynamicComponents";
 
-const components = {
-  "sections.text-items": TextItems,
-  "sections.text-cards": TextCards,
-  "sections.stages": Stages,
-  "sections.pricing": Pricing,
-  "sections.our-projects": OurProjects,
-  "sections.hero": Hero,
-  "sections.cta-banner": CTABanner,
-  "sections.cards": Cards,
-};
+type PageSection =
+  | HeroSectionData
+  | TextItemsSectionData
+  | TextCardsSectionData
+  | StagesSectionData
+  | PricingSectionData
+  | OurProjectsSectionData
+  | CTABannerSectionData
+  | CardsSectionData;
+
+function renderSection(item: PageSection) {
+  const componentKey = item.__component;
+
+  switch (componentKey) {
+    case "sections.hero":
+      return <Hero key={item.id} data={item} />;
+    case "sections.cta-banner":
+      return <CTABanner key={item.id} data={item} />;
+    case "sections.text-items":
+      return <TextItems key={item.id} data={item} />;
+    case "sections.text-cards":
+      return <TextCards key={item.id} data={item} />;
+    case "sections.stages":
+      return <Stages key={item.id} data={item} />;
+    case "sections.pricing":
+      return <Pricing key={item.id} data={item} />;
+    case "sections.our-projects":
+      return <OurProjects key={item.id} data={item} />;
+    case "sections.cards":
+      return <Cards key={item.id} data={item} />;
+    default:
+      return null;
+  }
+}
 
 type Props = PageProps<{
   rest: string[];
@@ -153,15 +186,7 @@ export default async function Home(props: Props) {
   return (
     <div>
       <main>
-        {data.data[0].content.map((item: any) => {
-          const key = item.__component as keyof typeof components;
-          const Component = components[key];
-          if (!Component) return null;
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          return <Component key={item.id + item.__component} data={item} />;
-        })}
-
+        {data.data[0].content.map((item: PageSection) => renderSection(item))}
         <StrapiContactForm />
       </main>
     </div>
