@@ -27,7 +27,12 @@ export async function StrapiHeader() {
       )}
     >
       <Link href="/">
-        <StrapiImage image={logo} />
+        <StrapiImage
+          image={logo}
+          width={100}
+          height={40}
+          className="w-[100] h-10"
+        />
       </Link>
       <div className="gap-8 hidden xl:flex">
         {links.map(
