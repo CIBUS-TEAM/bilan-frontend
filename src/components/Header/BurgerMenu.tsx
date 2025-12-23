@@ -4,26 +4,23 @@ import { cn } from "@/utilities/styles";
 import { useState } from "react";
 import NavLink from "../NavLink/NavLink";
 import Button from "../Button/Button";
+import { useTranslations } from "next-intl";
 
 interface BurgerMenuProps {
   links: { id: number; label: string; href: string; newTab: boolean }[];
   button: { id: number; label: string; href: string; newTab: boolean };
-  locale: string;
 }
 
-export default function BurgerMenu({ links, button, locale }: BurgerMenuProps) {
+export default function BurgerMenu({ links, button }: BurgerMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
-
+  const t = useTranslations("BurgerMenu");
   const handleClose = () => setIsOpen(false);
-  const openBurgerMenu =
-    locale === "uk" ? "Відкрити меню навігації" : "Open navigation menu";
-  const closeBurgerMenu =
-    locale === "uk" ? "Закрити меню навігації" : "Close navigation menu";
+
   return (
     <div className="relative xl:hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? openBurgerMenu : closeBurgerMenu}
+        aria-label={isOpen ? t("close") : t("open")}
         className="cursor-pointer w-8 h-6 flex flex-col justify-between items-center"
       >
         <span
