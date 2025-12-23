@@ -1,5 +1,9 @@
 {
   "HomePage": {
     "title": "Hello world!"
+  },
+  "BurgerMenu": {
+    "open": "Open navigation menu",
+    "close": "Close navigation menu"
   }
 }

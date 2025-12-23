@@ -4,6 +4,7 @@ import { cn } from "@/utilities/styles";
 import { useState } from "react";
 import NavLink from "../NavLink/NavLink";
 import Button from "../Button/Button";
+import { useTranslations } from "next-intl";
 
 interface BurgerMenuProps {
   links: { id: number; label: string; href: string; newTab: boolean }[];
@@ -12,13 +13,14 @@ interface BurgerMenuProps {
 
 export default function BurgerMenu({ links, button }: BurgerMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
-
+  const t = useTranslations("BurgerMenu");
   const handleClose = () => setIsOpen(false);
 
   return (
     <div className="relative xl:hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? t("close") : t("open")}
         className="cursor-pointer w-8 h-6 flex flex-col justify-between items-center"
       >
         <span

@@ -23,7 +23,12 @@ function Socials({
           href={social.link.href}
           className="text-text-secondary text-base font-medium leading-[26px]"
         >
-          <StrapiImage image={social.image} className="h-6 w-6" />
+          <StrapiImage
+            image={social.image}
+            width={24}
+            height={24}
+            className="h-6 w-6"
+          />
         </Link>
       ))}
     </div>
@@ -58,7 +63,12 @@ export async function StrapiFooter() {
     <footer>
       <div className="md:flex gap-[9%] md:py-12 md:border-b md:px-4 md:border-border lg:gap-32 lg:px-30">
         <div className="pt-12 px-4 pb-8 flex flex-col gap-4  border-b border-border md:flex-1 md:p-0 md:border-0">
-          <StrapiImage image={logo} />
+          <StrapiImage
+            image={logo}
+            width={100}
+            height={40}
+            className="w-[100px] h-10"
+          />
           <p className="text-text-secondary text-base font-medium leading-[26px] md:text-lg md:leading-7">
             {description}
           </p>

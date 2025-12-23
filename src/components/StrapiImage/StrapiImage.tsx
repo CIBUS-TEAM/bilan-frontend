@@ -7,7 +7,7 @@ type StrapiImageProps = {
   className?: string;
 };
 
-export async function StrapiImage({
+export function StrapiImage({
   image,
   height,
   width,
