@@ -37,21 +37,21 @@ function renderSection(item: PageSection) {
 
   switch (componentKey) {
     case "sections.hero":
-      return <Hero key={item.id} data={item} />;
+      return <Hero key={item.id + componentKey} data={item} />;
     case "sections.cta-banner":
-      return <CTABanner key={item.id} data={item} />;
+      return <CTABanner key={item.id + componentKey} data={item} />;
     case "sections.text-items":
-      return <TextItems key={item.id} data={item} />;
+      return <TextItems key={item.id + componentKey} data={item} />;
     case "sections.text-cards":
-      return <TextCards key={item.id} data={item} />;
+      return <TextCards key={item.id + componentKey} data={item} />;
     case "sections.stages":
-      return <Stages key={item.id} data={item} />;
+      return <Stages key={item.id + componentKey} data={item} />;
     case "sections.pricing":
-      return <Pricing key={item.id} data={item} />;
+      return <Pricing key={item.id + componentKey} data={item} />;
     case "sections.our-projects":
-      return <OurProjects key={item.id} data={item} />;
+      return <OurProjects key={item.id + componentKey} data={item} />;
     case "sections.cards":
-      return <Cards key={item.id} data={item} />;
+      return <Cards key={item.id + componentKey} data={item} />;
     default:
       return null;
   }
