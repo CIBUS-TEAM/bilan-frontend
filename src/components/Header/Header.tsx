@@ -9,14 +9,18 @@ import Link from "next/link";
 
 export async function StrapiHeader() {
   const locale = await getLocale();
-  const headerData = await fetchFromStrapi("/header", {
-    locale,
-    populate: {
-      logo: { populate: { image: true } },
-      links: true,
-      button: true,
+  const headerData = await fetchFromStrapi(
+    "/header",
+    {
+      locale,
+      populate: {
+        logo: { populate: { image: true } },
+        links: true,
+        button: true,
+      },
     },
-  });
+    "Header request"
+  );
   const { logo, links, button } = headerData.data;
 
   return (

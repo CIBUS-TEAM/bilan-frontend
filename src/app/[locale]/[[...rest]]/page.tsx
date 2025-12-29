@@ -64,13 +64,17 @@ type Props = PageProps<{
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const resolvedParams = await props.params;
   const slug = "/" + (resolvedParams.rest ?? []).join("/");
-  const data = await fetchFromStrapi("/pages", {
-    locale: resolvedParams.locale,
-    filters: { slug: { $eq: slug } },
-    populate: {
-      seo: { populate: { metaImage: true } },
+  const data = await fetchFromStrapi(
+    "/pages",
+    {
+      locale: resolvedParams.locale,
+      filters: { slug: { $eq: slug } },
+      populate: {
+        seo: { populate: { metaImage: true } },
+      },
     },
-  });
+    "SEO request"
+  );
   if (!data?.data.length) {
     return {
       title: "Page not found",
@@ -95,89 +99,93 @@ export default async function Home(props: Props) {
   const resolvedParams = await props.params;
   const slug = "/" + (resolvedParams.rest ?? []).join("/");
 
-  const data = await fetchFromStrapi("/pages", {
-    locale: resolvedParams.locale,
-    filters: { slug: { $eq: slug } },
-    populate: {
-      seo: { populate: { openGraph: true } },
-      content: {
-        on: {
-          "sections.hero": {
-            populate: {
-              headers: true,
-              primaryButton: true,
-              secondaryButton: true,
-              images: { populate: { image: true } },
-              items: true,
-            },
-          },
-          "sections.text-items": {
-            populate: {
-              headers: true,
-              items: true,
-              cards: {
-                populate: { icon: { populate: { image: true } } },
+  const data = await fetchFromStrapi(
+    "/pages",
+    {
+      locale: resolvedParams.locale,
+      filters: { slug: { $eq: slug } },
+      populate: {
+        seo: { populate: { openGraph: true } },
+        content: {
+          on: {
+            "sections.hero": {
+              populate: {
+                headers: true,
+                primaryButton: true,
+                secondaryButton: true,
+                images: { populate: { image: true } },
+                items: true,
               },
             },
-          },
-          "sections.text-cards": {
-            populate: {
-              headers: true,
-              cards: {
-                populate: {
-                  badges: true,
-                  button: true,
-                  image: {
-                    populate: {
-                      image: true,
+            "sections.text-items": {
+              populate: {
+                headers: true,
+                items: true,
+                cards: {
+                  populate: { icon: { populate: { image: true } } },
+                },
+              },
+            },
+            "sections.text-cards": {
+              populate: {
+                headers: true,
+                cards: {
+                  populate: {
+                    badges: true,
+                    button: true,
+                    image: {
+                      populate: {
+                        image: true,
+                      },
                     },
                   },
                 },
               },
             },
-          },
-          "sections.stages": {
-            populate: {
-              headers: true,
-              items: true,
-              image: { populate: { image: true } },
+            "sections.stages": {
+              populate: {
+                headers: true,
+                items: true,
+                image: { populate: { image: true } },
+              },
             },
-          },
-          "sections.pricing": {
-            populate: {
-              headers: true,
-              items: true,
-              button: true,
+            "sections.pricing": {
+              populate: {
+                headers: true,
+                items: true,
+                button: true,
+              },
             },
-          },
-          "sections.our-projects": {
-            populate: {
-              headers: true,
-              button: true,
-              cards: {
-                populate: {
-                  link: true,
-                  image: {
-                    populate: { image: true },
+            "sections.our-projects": {
+              populate: {
+                headers: true,
+                button: true,
+                cards: {
+                  populate: {
+                    link: true,
+                    image: {
+                      populate: { image: true },
+                    },
                   },
                 },
               },
             },
-          },
-          "sections.cta-banner": {
-            populate: {
-              button: true,
-              mobileImage: { populate: { image: true } },
-              desktopImage: { populate: { image: true } },
+            "sections.cta-banner": {
+              populate: {
+                button: true,
+                mobileImage: { populate: { image: true } },
+                desktopImage: { populate: { image: true } },
+              },
             },
-          },
-          "sections.cards": {
-            populate: { cards: { populate: { headers: true, items: true } } },
+            "sections.cards": {
+              populate: { cards: { populate: { headers: true, items: true } } },
+            },
           },
         },
       },
     },
-  });
+    "Page request"
+  );
 
   if (!data?.data.length) {
     notFound();
