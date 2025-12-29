@@ -21,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 async function generateLocalizedSitemap(
   locale: Locale
 ): Promise<MetadataRoute.Sitemap> {
-  const data = await fetchFromStrapi("/pages", { locale });
+  const data = await fetchFromStrapi("/pages", { locale }, "Sitemap request");
 
   return data.data.map((page: { slug: string; updatedAt: string }) => ({
     url: `${process.env.APP_PUBLIC_URL}${page.slug}`,

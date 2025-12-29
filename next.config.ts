@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "mindful-sunrise-bae89da167.media.strapiapp.com",
+        hostname: "leading-book-dbbb63721d.media.strapiapp.com",
         pathname: "/**",
       },
     ],

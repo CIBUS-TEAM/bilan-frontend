@@ -49,7 +49,8 @@ export async function StrapiContactForm() {
         },
         headers: true,
       },
-    }
+    },
+    "Contact Form request"
   );
 
   const {

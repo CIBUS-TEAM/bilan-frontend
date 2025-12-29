@@ -43,10 +43,14 @@ const populateFooter = {
 
 export async function StrapiFooter() {
   const locale = await getLocale();
-  const { data: footer } = await fetchFromStrapi("/footer", {
-    locale,
-    populate: populateFooter,
-  });
+  const { data: footer } = await fetchFromStrapi(
+    "/footer",
+    {
+      locale,
+      populate: populateFooter,
+    },
+    "Footer request"
+  );
 
   const {
     logo,

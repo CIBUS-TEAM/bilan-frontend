@@ -5,14 +5,18 @@ import { getLocale } from "next-intl/server";
 export default async function NotFound() {
   const locale = await getLocale();
 
-  const data = await fetchFromStrapi("/not-found", {
-    locale,
-    populate: {
-      button: true,
-      desktopImage: { populate: { image: true } },
-      mobileImage: { populate: { image: true } },
+  const data = await fetchFromStrapi(
+    "/not-found",
+    {
+      locale,
+      populate: {
+        button: true,
+        desktopImage: { populate: { image: true } },
+        mobileImage: { populate: { image: true } },
+      },
     },
-  });
+    "Not Found page request"
+  );
 
   return <NotFoundSection data={data.data} />;
 }

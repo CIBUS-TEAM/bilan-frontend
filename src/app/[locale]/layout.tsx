@@ -40,12 +40,16 @@ export default async function RootLayout({
 
   setRequestLocale(locale);
 
-  const headerData = await fetchFromStrapi("/header", {
-    locale,
-    populate: {
-      links: true,
+  const headerData = await fetchFromStrapi(
+    "/header",
+    {
+      locale,
+      populate: {
+        links: true,
+      },
     },
-  });
+    "Header request"
+  );
 
   return (
     <html lang={locale} className="scroll-smooth">
