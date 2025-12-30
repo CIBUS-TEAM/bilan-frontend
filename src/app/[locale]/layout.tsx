@@ -10,6 +10,8 @@ import { setRequestLocale } from "next-intl/server";
 import { AppLocale } from "@/types/types";
 import { fetchFromStrapi } from "@/fetch/fetch";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs/Breadcrumbs";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -50,7 +52,6 @@ export default async function RootLayout({
     },
     "Header request"
   );
-
   return (
     <html lang={locale} className="scroll-smooth">
       <body className={manrope.className}>
@@ -60,6 +61,17 @@ export default async function RootLayout({
           {children}
           <StrapiFooter />
         </NextIntlClientProvider>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </body>
     </html>
   );

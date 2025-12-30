@@ -5,5 +5,9 @@
   "BurgerMenu": {
     "open": "Open navigation menu",
     "close": "Close navigation menu"
+  },
+  "ContactForm": {
+    "successMessage": "Form submitted successfully!",
+    "errorMessage": "Failed to submit form. Please try again."
   }
 }
