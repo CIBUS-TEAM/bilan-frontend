@@ -26,7 +26,7 @@ export function Stages({ data }: { data: StagesSectionData }) {
           />
         )}
         <div
-          className="w-full rounded-2xl aspect-343/218 bg-cover hidden sm:block lg:max-w-[40.5%] lg:aspect-487/586"
+          className="w-full rounded-2xl aspect-343/218 bg-cover hidden sm:block lg:max-w-[487px] lg:aspect-487/586"
           style={{
             backgroundImage: `url(${image.image.url}), linear-gradient(180deg,#0060DE 0%,#7EACDD 100%)`,
           }}
