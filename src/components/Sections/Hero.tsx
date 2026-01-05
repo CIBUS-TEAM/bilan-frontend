@@ -22,11 +22,11 @@ export function Hero({ data }: { data: HeroSectionData }) {
   const showDesktopRow = hasItems || (!isImageBackground && hasButtons);
 
   return (
-    <div className="relative overflow-hidden lg:min-h-[800px] flex items-center justify-center">
+    <div className="relative overflow-hidden lg:min-h-[800px] flex items-center ">
       <Section className={showDesktopRow ? "lg:pt-0" : ""}>
         <div
           className={cn({
-            "lg:flex lg:flex-row lg:items-start lg:justify-between lg:gap-x-14":
+            "lg:flex lg:flex-row lg:items-start lg:justify-between lg:gap-x-57 ":
               showDesktopRow,
           })}
         >
@@ -35,8 +35,8 @@ export function Hero({ data }: { data: HeroSectionData }) {
             isHero
             hasItems={hasItems}
             isDesktopSecondary={isImageBackground}
-            className={cn({
-              "max-w-full lg:max-w-[588px]": showDesktopRow,
+            className={cn("lg:max-w-[55vw]", {
+              "max-w-full ": showDesktopRow,
             })}
           />
           {hasButtons && (

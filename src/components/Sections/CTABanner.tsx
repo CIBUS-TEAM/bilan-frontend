@@ -17,7 +17,7 @@ export function CTABanner({ data }: { data: CTABannerSectionData }) {
           </p>
         </div>
         <Button
-          className="mt-8 mb-6 lg:mt-12 sm:w-fit lg:mb-0"
+          className="mt-8 mb-6 lg:mt-12 sm:w-fit lg:mb-0 border-primary"
           variant="secondary"
           href={button.href}
         >

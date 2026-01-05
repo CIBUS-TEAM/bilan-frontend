@@ -18,7 +18,7 @@ export function Pricing({ data }: { data: PricingSectionData }) {
     <Section
       className={cn(
         "flex flex-col gap-8 md:gap-12",
-        "bg-cover bg-[url('/images/grid-background-mobile.webp')] md:bg-[url('/images/grid-background-desktop.webp')]"
+        "bg-cover bg-[url('/images/grid-background-mobile.webp')] md:bg-[url('/images/grid-background-desktop.webp')] bg-background-base"
       )}
     >
       <SectionHeaders {...headers} className="mx-auto" />

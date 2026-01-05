@@ -10,8 +10,8 @@ export function TextItems({ data }: { data: TextItemsSectionData }) {
 
   return (
     <Section
-      className={cn("flex flex-col gap-8 lg:gap-16", {
-        "bg-cover bg-[url('/images/grid-background-mobile.webp')] md:bg-[url('/images/grid-background-desktop.webp')]":
+      className={cn("flex flex-col gap-8 lg:gap-16 ", {
+        "bg-cover bg-[url('/images/grid-background-mobile.webp')] md:bg-[url('/images/grid-background-desktop.webp')] bg-background-base":
           isBackgroundGrid,
       })}
     >
@@ -40,7 +40,7 @@ export function TextItems({ data }: { data: TextItemsSectionData }) {
             <div
               className={cn(
                 "bg-white border border-border rounded-2xl shadow-card p-4 transition-all duration-300 transform hover:-translate-y-2.5",
-                "flex flex-col gap-6"
+                "flex flex-col  gap-x-6 gap-y-12"
               )}
               key={card.id}
             >
@@ -55,7 +55,7 @@ export function TextItems({ data }: { data: TextItemsSectionData }) {
                 <h3 className="text-lg! font-semibold! leading-7! lg:text-[22px]! lg:leading-[30px]!">
                   {card.title}
                 </h3>
-                <p className="text-base font-medium leading-[26px] lg:text-lg lg:leading-7 text-text-secondary">
+                <p className="text-base font-medium leading-[26px] lg:text-lg lg:leading-7 text-text-secondary min-w-[250px]">
                   {card.description}
                 </p>
               </div>

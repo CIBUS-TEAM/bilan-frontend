@@ -13,7 +13,7 @@ export function TextCards({ data }: { data: TextCardsSectionData }) {
     <Section
       className={cn(
         "flex flex-col gap-8 lg:gap-12",
-        "bg-cover bg-[url('/images/grid-background-mobile.webp')] md:bg-[url('/images/grid-background-desktop.webp')]"
+        "bg-auto bg-[url('/images/grid-background-mobile.webp')] md:bg-[url('/images/grid-background-desktop.webp')] bg-background-base"
       )}
     >
       <SectionHeaders {...headers} className="mx-auto" />

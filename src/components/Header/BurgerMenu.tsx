@@ -47,7 +47,7 @@ export default function BurgerMenu({ links, button }: BurgerMenuProps) {
         className={cn(
           "fixed top-14.5 lg:top-18.5 right-0 h-screen w-full bg-white",
           "transform transition-transform duration-300",
-          "pt-10 px-4 pb-28 flex flex-col gap-6 border-t border-border",
+          "pt-10 px-4 pb-28 flex flex-col gap-6",
           { "translate-x-0": isOpen },
           { "translate-x-full": !isOpen }
         )}

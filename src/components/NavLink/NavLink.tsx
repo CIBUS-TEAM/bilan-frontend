@@ -20,7 +20,7 @@ export function NavLink({ className, href, children, onClick }: NavLinkProps) {
       href={href}
       onClick={onClick}
       className={cn(
-        "text-text-secondary text-base font-medium leading-[26px] md:text-lg md:leading-7 hover:text-primary-dark",
+        "text-text-main text-base font-medium leading-[26px] md:text-lg md:leading-7 hover:text-primary-dark",
         { "text-primary": isActive },
         className
       )}

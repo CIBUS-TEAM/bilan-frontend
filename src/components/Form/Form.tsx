@@ -108,7 +108,7 @@ export async function StrapiContactForm() {
     <Section
       className={cn(
         "flex flex-col items-center",
-        "bg-cover bg-[url('/images/form-background-mobile.webp')] lg:bg-[url('/images/form-background-desktop.webp')]"
+        "bg-cover bg-[url('/images/form-background-mobile.webp')] lg:bg-[url('/images/form-background-desktop.webp')] bg-background-base"
       )}
       id="contact-us"
     >
