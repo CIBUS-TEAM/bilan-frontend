@@ -4,9 +4,8 @@ import SectionHeaders from "@/components/ui/Headers/SectionHeaders";
 import Section from "../ui/Section/Section";
 import { SectionHeadersData, StrapiImage } from "@/types/types";
 import { cn } from "@/utilities/styles";
-import Input from "../ui/Input/Input";
 import Image from "next/image";
-import SubmitButton from "./SubmitButton";
+import { ContactFormClient } from "./ContactFormClient";
 
 interface InputField {
   label: string;
@@ -66,32 +65,43 @@ export async function StrapiContactForm() {
   async function handleSubmit(formData: FormData) {
     "use server";
 
-    const name = formData.get("name");
-    const phone = formData.get("phone");
-    const email = formData.get("email");
-    const message = formData.get("message");
+    try {
+      const name = formData.get("name");
+      const phone = formData.get("phone");
+      const email = formData.get("email");
+      const message = formData.get("message");
 
-    const text = `
+      const text = `
 <b>Нове звернення:</b>
 
 <b>Ім'я:</b> ${name}
 <b>Телефон:</b> ${phone}
 <b>Email:</b> ${email}
-<b>Сообщение:</b> ${message}
+<b>Повідомлення:</b> ${message}
 `;
 
-    await fetch(
-      `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: process.env.TELEGRAM_CHAT_ID,
-          text,
-          parse_mode: "HTML",
-        }),
+      const response = await fetch(
+        `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage1`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: process.env.TELEGRAM_CHAT_ID,
+            text,
+            parse_mode: "HTML",
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        return { success: false, error: "Failed to send message" };
       }
-    );
+
+      return { success: true };
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      return { success: false, error: "Failed to send message" };
+    }
   }
 
   return (
@@ -104,48 +114,14 @@ export async function StrapiContactForm() {
     >
       <SectionHeaders {...headers} />
       <div className="w-full flex flex-col gap-6 lg:flex-row mt-8">
-        <form
-          action={handleSubmit}
-          className={cn(
-            "bg-white border border-border shadow-card rounded-2xl p-4",
-            "flex flex-col gap-6 lg:gap-12 lg:flex-1 xl:flex-2"
-          )}
-        >
-          <div className="flex flex-col gap-4 lg:gap-6">
-            <div className="flex flex-col gap-4 lg:gap-6 lg:flex-row">
-              <Input
-                required
-                id="name"
-                label={nameField.label}
-                placeholder={nameField.placeholder}
-                className="flex-1"
-              />
-              <Input
-                required
-                id="phone"
-                label={phoneField.label}
-                placeholder={phoneField.placeholder}
-                type="tel"
-                className="flex-1"
-              />
-            </div>
-            <Input
-              required
-              id="email"
-              label={mailField.label}
-              placeholder={mailField.placeholder}
-              type="email"
-            />
-            <Input
-              required
-              id="message"
-              label={messageField.label}
-              placeholder={messageField.placeholder}
-              as="textarea"
-            />
-          </div>
-          <SubmitButton className="sm:w-fit">{submitButton.label}</SubmitButton>
-        </form>
+        <ContactFormClient
+          nameField={nameField}
+          phoneField={phoneField}
+          mailField={mailField}
+          messageField={messageField}
+          submitButton={submitButton}
+          handleSubmit={handleSubmit}
+        />
         <div className="lg:flex-1 flex flex-col gap-4">
           {contactItems.map((item) => (
             <div
