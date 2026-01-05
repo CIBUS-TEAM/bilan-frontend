@@ -30,7 +30,7 @@ export function Button({
     "px-5 py-3 rounded-lg flex gap-2 justify-center items-center cursor-pointer text-base font-semibold",
     {
       "bg-primary text-white hover:bg-primary-dark": variant === "primary",
-      "bg-white border border-text-main hover:bg-primary hover:text-white":
+      "bg-white border border-primary hover:bg-primary hover:text-white":
         variant === "secondary",
       "opacity-50 cursor-not-allowed hover:none": disabled,
     },
