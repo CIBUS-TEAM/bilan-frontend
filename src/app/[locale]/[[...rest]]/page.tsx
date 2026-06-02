@@ -73,7 +73,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         seo: { populate: { metaImage: true } },
       },
     },
-    "SEO request"
+    "SEO request",
   );
   if (!data?.data.length) {
     return {
@@ -184,7 +184,7 @@ export default async function Home(props: Props) {
         },
       },
     },
-    "Page request"
+    "Page request",
   );
 
   if (!data?.data.length) {
@@ -194,8 +194,8 @@ export default async function Home(props: Props) {
   return (
     <div>
       <main>
-        {data.data[0].content.map((item: PageSection) => renderSection(item))}
-        <StrapiContactForm />
+        {/* {data.data[0].content.map((item: PageSection) => renderSection(item))} */}
+        {/* <StrapiContactForm /> */}
       </main>
     </div>
   );
